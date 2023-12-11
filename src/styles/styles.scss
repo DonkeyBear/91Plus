@@ -1,0 +1,48 @@
+@import "./variables.scss";
+
+html {
+  background: $bg-color url(/templets/pu/images/tone-bg.gif);
+}
+
+.tfunc2 {
+  margin: 10px;
+}
+
+#mtitle {
+  font-family: system-ui;
+}
+
+input[type="range"],
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  box-shadow: none;
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-webkit-slider-runnable-track {
+  border: 1px solid rgba($color: navy, $alpha: 0.2);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  background: rgb(141, 193, 226);
+}
+
+#viptoneWindow.window, // 需要倒數才能關閉的蓋版廣告
+#bottomad, // 在頁面最底部的廣告
+.update_vip_bar, // 最上方提醒升級VIP的廣告
+.wmask, // 譜上的 LOGO 和浮水印
+header, // 彈出式頁首
+footer, // 彈出式頁尾
+.autoscroll, // 自動滾動頁面捲軸
+.backplace, // 頁首的返回列
+.set .keys, // 頁首的多餘列
+.set .plays,
+.set .clear,
+.setint .hr:nth-child(4), // 功能列上多餘的按鈕
+.setint .hr:nth-child(5),
+.setint .hr:nth-child(6),
+.adsbygoogle {
+  // 其餘的Google廣告
+  display: none !important;
+}

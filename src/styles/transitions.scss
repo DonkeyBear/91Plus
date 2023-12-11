@@ -1,0 +1,28 @@
+@mixin transition-slide-and-fade {
+  .slide-and-fade-enter-active,
+  .slide-and-fade-leave-active {
+    transition: all 0.2s;
+  }
+
+  .slide-and-fade-enter-from,
+  .slide-and-fade-leave-to {
+    transform: translateY(10%);
+    opacity: 0;
+  }
+}
+
+@mixin transition-slide($up-or-down) {
+  .slide-enter-active,
+  .slide-leave-active {
+    transition: transform 0.2s;
+  }
+
+  .slide-enter-from,
+  .slide-leave-to {
+    @if $up-or-down == up {
+      transform: translateY(-100%);
+    } @else if $up-or-down == down {
+      transform: translateY(100%);
+    }
+  }
+}
