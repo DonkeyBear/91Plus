@@ -46,7 +46,7 @@ export const useStore = defineStore('store', {
   },
   getters: {
     currentCapo() {
-      return this.transpose - this.originalCapo;
+      return this.originalCapo + this.transpose;
     },
     currentKey() {
       return new Chord(this.originalKey).transpose(-this.transpose).toFormattedString();
@@ -76,7 +76,12 @@ export const useStore = defineStore('store', {
       }
     },
     plusTranspose(numberToPlus) {
-      this.transpose = (numberToPlus + this.transpose) % 12;
+      let newTranspose = this.transpose + numberToPlus;
+      const newCapo = this.originalCapo + newTranspose;
+      if (newCapo === 12 || newCapo === -12) {
+        newTranspose = -this.originalCapo;
+      }
+      this.transpose = newTranspose;
     }
   }
 })
