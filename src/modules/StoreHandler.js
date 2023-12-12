@@ -20,6 +20,12 @@ export class StoreHandler {
     this.#store.originalCapo = originalCapo;
     this.#store.originalKey = originalKey;
 
+    // 儲存初始字型大小和行高，單位為 px
+    const fontSize = +$('#tone_z').css('font-size').match(/^\d+/)[0];
+    const lineHeight = +$('#tone_z > p').css('line-height').match(/^\d+/)[0];
+    this.#store.originalFontSize = fontSize;
+    this.#store.originalLineHeight = lineHeight;
+
     // 依照 URL 參數進行移調
     const params = getQueryParams();
     if (params.transpose) { this.#store.transpose = params.transpose }
@@ -27,6 +33,7 @@ export class StoreHandler {
 
   start() {
     this.#watchTranspose();
+    this.#watchFontSize();
     return this;
   }
 
@@ -36,6 +43,17 @@ export class StoreHandler {
       return this.#store.transpose;
     }, (newValue, oldValue) => {
       ChordSheetElement.transposeSheet(newValue - oldValue);
+    });
+  }
+
+  #watchFontSize() {
+    watch(() => {
+      return this.#store.fontSizeDelta;
+    }, (newValue) => {
+      const oFontSize = this.#store.originalFontSize;
+      const oLineHeight = this.#store.originalLineHeight;
+      $('#tone_z').css('font-size', `${oFontSize + newValue}px`);
+      $('#tone_z > p').css('line-height', `${oLineHeight + newValue}px`);
     });
   }
 }

@@ -13,6 +13,7 @@ export const useStore = defineStore('store', {
       isToolbarsShow: false,
       isPopupShow: {
         sheet: false,
+        font: false,
         settings: false,
         menu: false
       },
@@ -27,7 +28,13 @@ export const useStore = defineStore('store', {
       /** 在 `StoreHandler` 裡賦值 */
       originalCapo: 0,
       /** 在 `StoreHandler` 裡賦值，HTML 格式 */
-      originalKey: ''
+      originalKey: '',
+      /** `font-size` 的變化值 */
+      fontSizeDelta: 0,
+      /** 在 `StoreHandler` 裡賦值，單位為 px */
+      originalFontSize: 0,
+      /** 在 `StoreHandler` 裡賦值，單位為 px */
+      originalLineHeight: 0
     }
   },
   persist: {

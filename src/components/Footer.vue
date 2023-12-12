@@ -2,6 +2,7 @@
 import { useStore } from '../store';
 import ToolbarIcon from './ToolbarIcon.vue';
 import SheetPopup from './SheetPopup.vue';
+import FontSizePopup from './FontSizePopup.vue';
 import SettingsPopup from './SettingsPopup.vue';
 import MenuPopup from './MenuPopup.vue';
 
@@ -17,10 +18,11 @@ const props = defineProps({
     <div id="plus91-footer" v-show="active">
       <div class="footer-container">
         <ToolbarIcon icon="music_note" @click="store.openPopup('sheet')" />
-        <!-- <ToolbarIcon icon="format_size" /> -->
+        <ToolbarIcon icon="format_size" @click="store.openPopup('font')" />
         <ToolbarIcon icon="settings" @click="store.openPopup('settings')" />
         <!-- <ToolbarIcon icon="menu" @click="store.openPopup('menu')" /> -->
         <SheetPopup />
+        <FontSizePopup />
         <SettingsPopup />
         <MenuPopup />
       </div>
