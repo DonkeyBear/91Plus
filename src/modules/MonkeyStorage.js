@@ -6,7 +6,11 @@ export default class MonkeyStorage {
    * @returns {String|null}
    */
   static getItem(key) {
-    return GM_getValue(key, null);
+    if (GM_getValue) {
+      return GM_getValue(key, null);
+    } else {
+      return localStorage.getItem(key);
+    }
   }
 
   /**
@@ -15,6 +19,10 @@ export default class MonkeyStorage {
    * @returns {void}
    */
   static setItem(key, value) {
-    GM_setValue(key, value);
+    if (GM_setValue) {
+      GM_setValue(key, value);
+    } else {
+      localStorage.setItem(key, value);
+    }
   }
 }

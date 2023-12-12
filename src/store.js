@@ -31,7 +31,7 @@ export const useStore = defineStore('store', {
     }
   },
   persist: {
-    key: 'preferences',
+    key: 'plus91-preferences',
     storage: MonkeyStorage,
     deserialize: parse,
     serialize: stringify,
