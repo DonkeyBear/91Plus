@@ -20,7 +20,7 @@ const props = defineProps({
         <ToolbarIcon icon="music_note" @click="store.openPopup('sheet')" />
         <ToolbarIcon icon="format_size" @click="store.openPopup('font')" />
         <ToolbarIcon icon="settings" @click="store.openPopup('settings')" />
-        <!-- <ToolbarIcon icon="menu" @click="store.openPopup('menu')" /> -->
+        <ToolbarIcon icon="menu" @click="store.openPopup('menu')" />
         <SheetPopup />
         <FontSizePopup />
         <SettingsPopup />
