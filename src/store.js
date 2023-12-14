@@ -64,6 +64,9 @@ export const useStore = defineStore('store', {
       if (this.isToolbarsShow) {
         // 關閉 Toolbars 時，把所有的 Modal 跟 Popup 一起關掉
         this.closePopups();
+      } else {
+        // 開啟 Toolbars 時，將移調 Popup 一同打開
+        this.isPopupShow.sheet = true;
       }
       this.isToolbarsShow = !this.isToolbarsShow;
     },
