@@ -1,57 +1,8 @@
 # 91 Plus
 
-<div
-  class="banner-container"
-  style="
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-  ">
-  <div class="new">
-    <h2
-      style="
-        font-size: 1.2rem;
-        text-align: center;
-      "
-    >91 Plus（新版）</h2>
-    <div class="badges">
-      <a href="https://greasyfork.org/scripts/481925">
-        <img
-          src="https://img.shields.io/greasyfork/v/481925?logo=tampermonkey&label=%E7%9B%AE%E5%89%8D%E7%89%88%E6%9C%AC"
-          alt="Greasy Fork Version"
-        >
-      </a>
-      <a href="https://greasyfork.org/scripts/481925">
-        <img
-          src="https://img.shields.io/greasyfork/dt/481925?logo=tampermonkey&label=%E5%AE%89%E8%A3%9D%E7%B8%BD%E6%95%B8"
-          alt="Greasy Fork"
-        >
-      </a>
-    </div>
-  </div>
-  <div class="old">
-    <h2
-      style="
-        font-size: 1.2rem;
-        text-align: center;
-      "
-    >91 Plus M（舊版）</h2>
-    <div class="badges">
-      <a href="https://greasyfork.org/scripts/455426">
-        <img
-          src="https://img.shields.io/greasyfork/v/455426?logo=tampermonkey&label=%E7%9B%AE%E5%89%8D%E7%89%88%E6%9C%AC"
-          alt="Greasy Fork Version"
-        >
-      </a>
-      <a href="https://greasyfork.org/scripts/455426">
-        <img
-          src="https://img.shields.io/greasyfork/dt/455426?logo=tampermonkey&label=%E5%AE%89%E8%A3%9D%E7%B8%BD%E6%95%B8"
-          alt="Greasy Fork"
-        >
-      </a>
-    </div>
-  </div>
-</div>
+| 91 Plus（新版）                                                                                                                                                                                                                                                                                                                            | 91 Plus M（舊版）                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [![Greasy Fork Version](https://img.shields.io/greasyfork/v/481925?logo=tampermonkey&label=%E7%9B%AE%E5%89%8D%E7%89%88%E6%9C%AC)](https://greasyfork.org/scripts/481925) [![Greasy Fork](https://img.shields.io/greasyfork/dt/481925?logo=tampermonkey&label=%E5%AE%89%E8%A3%9D%E7%B8%BD%E6%95%B8)](https://greasyfork.org/scripts/481925) | [![Greasy Fork Version](https://img.shields.io/greasyfork/v/455426?logo=tampermonkey&label=%E7%9B%AE%E5%89%8D%E7%89%88%E6%9C%AC)](https://greasyfork.org/scripts/455426) [![Greasy Fork](https://img.shields.io/greasyfork/dt/455426?logo=tampermonkey&label=%E5%AE%89%E8%A3%9D%E7%B8%BD%E6%95%B8)](https://greasyfork.org/scripts/455426) |
 
 ## 簡介
 
