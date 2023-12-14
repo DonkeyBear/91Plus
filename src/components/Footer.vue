@@ -17,10 +17,10 @@ const props = defineProps({
   <Transition name="slide">
     <div id="plus91-footer" v-show="active">
       <div class="footer-container">
-        <ToolbarIcon icon="music_note" @click="store.openPopup('sheet')" />
-        <ToolbarIcon icon="format_size" @click="store.openPopup('font')" />
-        <ToolbarIcon icon="settings" @click="store.openPopup('settings')" />
-        <ToolbarIcon icon="menu" @click="store.openPopup('menu')" />
+        <ToolbarIcon icon="music_note" :active="store.isPopupShow.sheet" @click="store.openPopup('sheet')" />
+        <ToolbarIcon icon="format_size" :active="store.isPopupShow.font" @click="store.openPopup('font')" />
+        <ToolbarIcon icon="settings" :active="store.isPopupShow.settings" @click="store.openPopup('settings')" />
+        <ToolbarIcon icon="menu" :active="store.isPopupShow.menu" @click="store.openPopup('menu')" />
         <SheetPopup />
         <FontSizePopup />
         <SettingsPopup />
@@ -43,5 +43,6 @@ const props = defineProps({
 .footer-container {
   @include toolbar-container;
   border-radius: 1rem 1rem 0 0;
+  padding-bottom: .75rem;
 }
 </style>

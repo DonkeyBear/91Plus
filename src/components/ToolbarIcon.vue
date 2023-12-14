@@ -4,12 +4,16 @@ const props = defineProps({
   color: {
     type: String,
     default: '#fffe'
+  },
+  active: {
+    type: Boolean,
+    default: false
   }
 });
 </script>
 
 <template>
-  <span class="material-symbols-rounded">
+  <span class="material-symbols-rounded" :active="active">
     {{ icon }}
   </span>
 </template>
@@ -19,7 +23,12 @@ const props = defineProps({
   cursor: pointer;
   user-select: none;
   color: v-bind(color);
-  font-size: 1.25rem;
-  padding: 0 .75rem;
+  font-size: 1.5rem;
+  padding: .25rem .75rem;
+  transition: text-shadow .3s;
+
+  &[active="true"] {
+    text-shadow: 0 0 1rem rgba(50, 80, 200, 1);
+  }
 }
 </style>
