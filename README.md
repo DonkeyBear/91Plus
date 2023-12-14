@@ -1,21 +1,19 @@
 # 91 Plus
 
-<style>
-.banner-container {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-}
-
-.banner-container h2 {
-  font-size: 1.2rem;
-  text-align: center;
-}
-</style>
-
-<div class="banner-container">
+<div
+  class="banner-container"
+  style="
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  ">
   <div class="new">
-    <h2>91 Plus（新版）</h2>
+    <h2
+      style="
+        font-size: 1.2rem;
+        text-align: center;
+      "
+    >91 Plus（新版）</h2>
     <div class="badges">
       <a href="https://greasyfork.org/scripts/481925">
         <img
@@ -32,7 +30,12 @@
     </div>
   </div>
   <div class="old">
-    <h2>91 Plus M（舊版）</h2>
+    <h2
+      style="
+        font-size: 1.2rem;
+        text-align: center;
+      "
+    >91 Plus M（舊版）</h2>
     <div class="badges">
       <a href="https://greasyfork.org/scripts/455426">
         <img
