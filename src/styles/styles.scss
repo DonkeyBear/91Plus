@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "./cdns.scss";
 
 html {
   background: $bg-color url(/templets/pu/images/tone-bg.gif);
@@ -21,11 +22,11 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 input[type="range"]::-webkit-slider-thumb,
 input[type="range"]::-webkit-slider-runnable-track {
-  border: 1px solid rgba($color: navy, $alpha: 0.2);
+  border: 1px solid rgba($color: #444, $alpha: 0.25);
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  background: rgb(141, 193, 226);
+  background: #60748d;
 }
 
 #viptoneWindow.window, // 需要倒數才能關閉的蓋版廣告

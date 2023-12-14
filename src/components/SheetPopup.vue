@@ -1,5 +1,6 @@
 <script setup>
 import { useStore } from '../store';
+import BootstrapIcon from './BootstrapIcon.vue';
 import ToolbarIcon from './ToolbarIcon.vue';
 
 const store = useStore();
@@ -11,14 +12,14 @@ const store = useStore();
       <div class="sheet-popup-container">
         <div class="transpose-button-group">
           <button class="capo-button decrease" @click="() => { store.plusTranspose(-1) }">
-            <ToolbarIcon icon="arrow_left" color="black" />
+            <BootstrapIcon icon="caret-left-fill" color="#444" />
           </button>
           <button class="capo-button info" @click="() => { store.transpose = 0 }">
             CAPO：<span class="text-capo">{{ store.currentCapo }}</span>
             (<span class="text-key" v-html="store.currentKey"></span>)
           </button>
           <button class="capo-button increase" @click="() => { store.plusTranspose(1) }">
-            <ToolbarIcon icon="arrow_right" color="black" />
+            <BootstrapIcon icon="caret-right-fill" color="#444" />
           </button>
         </div>
         <div class="transpose-range-container">
@@ -58,6 +59,7 @@ const store = useStore();
 
     &.info {
       flex-grow: 1;
+      color: #444;
     }
 
     &.increase {

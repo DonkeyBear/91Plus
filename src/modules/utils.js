@@ -28,14 +28,6 @@ export function injectGtag() {
   };
 }
 
-/** 引入 Material Symbols */
-export function injectIconFont() {
-  const materialSymbols = document.createElement('link');
-  materialSymbols.rel = 'stylesheet';
-  materialSymbols.href = 'https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0';
-  document.head.appendChild(materialSymbols);
-}
-
 /**
  * @typedef {object} Params
  * @prop {number} transpose

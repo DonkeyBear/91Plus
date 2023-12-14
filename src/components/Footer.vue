@@ -17,10 +17,30 @@ const props = defineProps({
   <Transition name="slide">
     <div id="plus91-footer" v-show="active">
       <div class="footer-container">
-        <ToolbarIcon icon="music_note" :active="store.isPopupShow.sheet" @click="store.openPopup('sheet')" />
-        <ToolbarIcon icon="format_size" :active="store.isPopupShow.font" @click="store.openPopup('font')" />
-        <ToolbarIcon icon="settings" :active="store.isPopupShow.settings" @click="store.openPopup('settings')" />
-        <ToolbarIcon icon="menu" :active="store.isPopupShow.menu" @click="store.openPopup('menu')" />
+        <ToolbarIcon
+          icon="music-note-beamed"
+          stroke=".05rem"
+          :active="store.isPopupShow.sheet"
+          @click="store.openPopup('sheet')"
+        />
+        <ToolbarIcon
+          icon="type"
+          stroke=".05rem"
+          :active="store.isPopupShow.font"
+          @click="store.openPopup('font')"
+        />
+        <ToolbarIcon
+          icon="gear-wide-connected"
+          :active="store.isPopupShow.settings"
+          @click="store.openPopup('settings')"
+        />
+        <ToolbarIcon
+          icon="list"
+          stroke=".05rem"
+          :active="store.isPopupShow.menu"
+          @click="store.openPopup('menu')"
+        />
+        <!-- Popups -->
         <SheetPopup />
         <FontSizePopup />
         <SettingsPopup />

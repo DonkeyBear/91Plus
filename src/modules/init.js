@@ -3,7 +3,6 @@ import { StoreHandler } from './StoreHandler';
 import {
   redirect,
   injectGtag,
-  injectIconFont,
   initMutationObserver,
   changeTitle,
   onDomReady,
@@ -13,7 +12,6 @@ import {
 export default function init() {
   redirect();
   injectGtag();
-  injectIconFont();
   initMutationObserver();
   const storeHandler = new StoreHandler().start();
 

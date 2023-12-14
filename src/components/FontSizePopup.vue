@@ -1,6 +1,6 @@
 <script setup>
 import { useStore } from '../store';
-import ToolbarIcon from './ToolbarIcon.vue';
+import BootstrapIcon from './BootstrapIcon.vue';
 
 const store = useStore();
 </script>
@@ -11,13 +11,13 @@ const store = useStore();
       <div class="font-popup-container">
         <div class="font-button-group">
           <button class="capo-button decrease" @click="() => { store.fontSizeDelta-- }">
-            <ToolbarIcon icon="arrow_left" color="black" />
+            <BootstrapIcon icon="caret-left-fill" color="#444" />
           </button>
           <button class="capo-button info" @click="() => { store.fontSizeDelta = 0 }">
             {{ store.originalFontSize + store.fontSizeDelta }}px
           </button>
           <button class="capo-button increase" @click="() => { store.fontSizeDelta++ }">
-            <ToolbarIcon icon="arrow_right" color="black" />
+            <BootstrapIcon icon="caret-right-fill" color="#444" />
           </button>
         </div>
       </div>
@@ -44,6 +44,7 @@ const store = useStore();
 
     &.info {
       flex-grow: 1;
+      color: #444;
     }
 
     &.increase {

@@ -1,34 +1,41 @@
 <script setup>
+import BootstrapIcon from './BootstrapIcon.vue';
+
 const props = defineProps({
-  icon: String,
-  color: {
+  icon: {
     type: String,
-    default: '#fffe'
+    required: true
+  },
+  stroke: {
+    type: String,
+    default: '0'
   },
   active: {
     type: Boolean,
     default: false
+  },
+  color: {
+    type: String,
+    default: 'whitesmoke'    
   }
 });
 </script>
 
 <template>
-  <span class="material-symbols-rounded" :active="active">
-    {{ icon }}
-  </span>
+  <div class="toolbar-icon">
+    <BootstrapIcon
+      :icon="icon"
+      :color="color"
+      size="1.3rem"
+      :stroke="stroke"
+      :active="active"
+    />
+  </div>
 </template>
 
 <style scoped lang="scss">
-.material-symbols-rounded {
+.toolbar-icon {
   cursor: pointer;
-  user-select: none;
-  color: v-bind(color);
-  font-size: 1.5rem;
-  padding: .25rem .75rem;
-  transition: text-shadow .3s;
-
-  &[active="true"] {
-    text-shadow: 0 0 1rem rgba(50, 80, 200, 1);
-  }
+  padding: 0.25rem 0.75rem;
 }
 </style>

@@ -23,9 +23,8 @@ const goToGithubPage = () => {
   <Transition name="slide-and-fade">
     <div id="plus91-menu-popup" v-show="store.isPopupShow.menu">
       <div class="menu-popup-container">
-        <!-- <MenuButton icon="keyboard" name="快捷鍵" color="gray" /> -->
-        <MenuButton icon="video_library" name="搜尋 YouTube" color="gray" @click="searchOnYoutube" />
-        <MenuButton icon="info" name="關於 91 Plus" color="gray" @click="goToGithubPage" />
+        <MenuButton icon="youtube" name="搜尋 YouTube" color="#555" @click="searchOnYoutube" />
+        <MenuButton icon="github" name="關於 91 Plus" color="#555" @click="goToGithubPage" />
       </div>
     </div>
   </Transition>

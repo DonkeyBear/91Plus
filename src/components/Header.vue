@@ -22,9 +22,17 @@ const backToPreviousPage = () => {
   <Transition name="slide">
     <div id="plus91-header" v-show="active">
       <div class="header-container">
-        <ToolbarIcon icon="arrow_back_ios_new" @click="backToPreviousPage" />
+        <ToolbarIcon
+          icon="chevron-left"
+          stroke=".04rem"
+          @click="backToPreviousPage"
+        />
         <input type="text" placeholder="91 Plus" v-model.trim="searchText" @keydown.enter="search">
-        <ToolbarIcon icon="search" @click="search()" />
+        <ToolbarIcon
+          icon="search"
+          stroke=".03rem"
+          @click="search()"
+        />
       </div>
     </div>
   </Transition>
