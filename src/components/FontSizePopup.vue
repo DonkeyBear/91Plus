@@ -1,8 +1,11 @@
 <script setup>
+import { computed } from 'vue';
 import { useStore } from '../store';
 import AdjustWidget from './AdjustWidget.vue';
 
 const store = useStore();
+
+const getFontSize = computed(() => { return store.originalFontSize + store.fontSizeDelta });
 </script>
 
 <template>
@@ -13,8 +16,10 @@ const store = useStore();
           :onclick-left="() => { store.fontSizeDelta-- }"
           :onclick-middle="() => { store.fontSizeDelta = 0 }"
           :onclick-right="() => { store.fontSizeDelta++ }"
+          :disabled-left=" getFontSize <= 8 "
+          :disabled-right=" getFontSize >= 30 "
         >
-          {{ store.originalFontSize + store.fontSizeDelta }}px
+          {{ getFontSize }}px
         </AdjustWidget>
       </div>
     </div>

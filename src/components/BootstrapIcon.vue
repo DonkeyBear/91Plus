@@ -38,7 +38,6 @@ watch(() => props.active, () => {
   color: v-bind(color);
   font-size: v-bind(size);
   -webkit-text-stroke: v-bind(stroke) v-bind(color);
-  cursor: pointer;
   
   &::before {
     transition: text-shadow .2s;

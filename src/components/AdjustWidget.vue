@@ -10,6 +10,18 @@ const props = defineProps({
     type: String,
     default: 'caret-right-fill'
   },
+  disabledLeft: {
+    type: Boolean,
+    default: false
+  },
+  disabledMiddle: {
+    type: Boolean,
+    default: false
+  },
+  disabledRight: {
+    type: Boolean,
+    default: false
+  },
   color: {
     type: String,
     default: '#444'
@@ -26,13 +38,25 @@ const props = defineProps({
 
 <template>
   <div class="adjust-widget">
-    <button class="adjust-button adjust-button-left" @click="onclickLeft">
+    <button
+      class="adjust-button adjust-button-left"
+      @click="onclickLeft"
+      :disabled="disabledLeft"
+    >
       <BootstrapIcon :icon="iconLeft" :color="color" :size="size" />
     </button>
-    <button class="adjust-button adjust-button-middle" @click="onclickMiddle">
+    <button
+      class="adjust-button adjust-button-middle"
+      @click="onclickMiddle"
+      :disabled="disabledMiddle"
+    >
       <slot></slot>
     </button>
-    <button class="adjust-button adjust-button-right" @click="onclickRight">
+    <button
+      class="adjust-button adjust-button-right"
+      @click="onclickRight"
+      :disabled="disabledRight"
+    >
       <BootstrapIcon :icon="iconRight" :color="color" :size="size" />
     </button>
   </div>
@@ -47,10 +71,13 @@ const props = defineProps({
     border: 0;
     border-radius: .25rem;
     background: transparent;
-    transition: color .1s;
 
     &:hover {
       background: rgba($color: black, $alpha: .025);
+    }
+
+    &:disabled {
+      opacity: .25;
     }
 
     &.adjust-button-middle {
