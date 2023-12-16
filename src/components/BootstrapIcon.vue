@@ -1,6 +1,4 @@
 <script setup>
-import { watch } from 'vue';
-
 const props = defineProps({
   icon: {
     type: String,
@@ -23,10 +21,6 @@ const props = defineProps({
     default: false
   }
 });
-
-watch(() => props.active, () => {
-  console.log(props.active);
-})
 </script>
 
 <template>
