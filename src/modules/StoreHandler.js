@@ -42,7 +42,7 @@ export class StoreHandler {
     watch(() => {
       return this.#store.transpose;
     }, (newValue, oldValue) => {
-      ChordSheetElement.transposeSheet(newValue - oldValue);
+      ChordSheetElement.transposeSheet((newValue - oldValue) % 12);
     });
   }
 
