@@ -57,7 +57,8 @@ const backToPreviousPage = () => {
     width: 100%;
     border-radius: 50rem;
     border: 0;
-    font-size: 1rem;
+    font-size: .8rem;
+    font-weight: bold;
     padding: .35rem 1.25rem;
     background: #fffa;
     color: #0009;
