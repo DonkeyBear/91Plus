@@ -21,6 +21,12 @@ const props = defineProps({
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  padding: 0 .6rem .4rem;
+  border-radius: .25rem;
+
+  &:hover {
+    background: rgba($color: black, $alpha: .025);
+  }
 
   .button-text {
     font-size: .5rem;
