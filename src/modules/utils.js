@@ -126,3 +126,24 @@ export function handleEvents() {
     StoreHandler.handleKeydown(event.key);
   })
 }
+
+/**
+ * 切換和弦譜旁顯示的和弦類型（91 譜原生）
+ * @param {'guitar'|'ukulele'} instrument 
+ */
+export function switchInstrument(instrument) {
+  switch (instrument) {
+    case 'guitar': {
+      $('.schord').trigger('click');
+      break;
+    }
+    case 'ukulele': {
+      $('.ukschord').trigger('click');
+      break;
+    }
+    default: {
+      $('.nsChord').trigger('click');
+      break;
+    }
+  }
+}

@@ -1,6 +1,7 @@
 <script setup>
 import { useStore } from '../store';
 import AdjustWidget from './AdjustWidget.vue';
+import { switchInstrument } from '../modules/utils';
 
 const store = useStore();
 </script>
@@ -22,6 +23,17 @@ const store = useStore();
             store.transpose = $event.target.value - store.originalCapo;
           }">
         </div>
+        <div class="instrument-select-container">
+          <button class="instrument-select-button" @click="() => { switchInstrument('') }">
+            無
+          </button>
+          <button class="instrument-select-button" @click="() => { switchInstrument('guitar') }">
+            吉他
+          </button>
+          <button class="instrument-select-button" @click="() => { switchInstrument('ukulele') }">
+            烏克莉莉
+          </button>
+        </div>
       </div>
     </div>
   </Transition>
@@ -41,6 +53,39 @@ const store = useStore();
 
   input[type="range"] {
     width: 100%;
+  }
+}
+
+.instrument-select-container {
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: .25rem;
+  margin-top: 1rem;
+  background: white;
+  
+  .instrument-select-button {
+    width: calc(100% / 3);
+    border: 0;
+    border-right: 1px solid lightgray;
+    background: transparent;
+    color: #666;
+    padding: .5rem;
+    font-size: .65rem;
+    font-weight: bold;
+    cursor: pointer !important;
+
+    &:last-child {
+      border: 0;
+      border-radius: 0 .25rem .25rem 0;
+    }
+    
+    &:first-child {
+      border-radius: .25rem 0 0 .25rem;
+    }
+
+    &:hover {
+      background: whitesmoke;
+    }
   }
 }
 </style>
