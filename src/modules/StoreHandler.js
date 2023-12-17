@@ -56,4 +56,54 @@ export class StoreHandler {
       $('#tone_z > p').css('line-height', `${oLineHeight + newValue}px`);
     });
   }
-}
+
+  static handleKeydown(key) {
+    const store = useStore();
+    
+    switch (key) {
+      case ' ': {
+        store.toggleToolbars();
+        break;
+      }
+      case '/': {
+        if (!store.isToolbarsShow) {
+          store.toggleToolbars();
+          store.closePopups();
+        }
+        setTimeout(() => {
+          $('#plus91-header input').get(0).focus();
+        }, 0);
+        break;
+      }
+      case 'Escape': {
+        if (store.isToolbarsShow) {
+          store.toggleToolbars();
+        }
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+    
+    if (store.isPopupShow.sheet) {
+      switch (key) {
+        case 'ArrowLeft': {
+          store.plusTranspose(-1);
+          break;
+        }
+        case 'ArrowRight': {
+          store.plusTranspose(1);
+          break;
+        }
+        case 'ArrowDown': {
+          store.transpose = 0;
+          break;
+        }
+        default: {
+          break;
+        }
+      }
+    }
+  }
+} 

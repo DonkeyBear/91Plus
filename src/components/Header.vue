@@ -27,7 +27,13 @@ const backToPreviousPage = () => {
           stroke=".04rem"
           @click="backToPreviousPage"
         />
-        <input type="text" placeholder="91 Plus" v-model.trim="searchText" @keydown.enter="search">
+        <input
+          type="text"
+          placeholder="91 Plus"
+          v-model.trim="searchText"
+          @keydown.enter="search"
+          @keydown.esc="(event) => { event.target.blur() }"
+        >
         <ToolbarIcon
           icon="search"
           stroke=".03rem"

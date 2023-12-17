@@ -6,13 +6,15 @@ import {
   initMutationObserver,
   changeTitle,
   onDomReady,
-  archiveChordSheet
+  archiveChordSheet,
+  handleEvents
 } from './utils';
 
 export default function init() {
   redirect();
   injectGtag();
   initMutationObserver();
+  handleEvents();
   const storeHandler = new StoreHandler().start();
 
   // 頁面動態讀取完成時觸發

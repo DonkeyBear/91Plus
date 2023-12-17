@@ -1,0 +1,42 @@
+{
+  "hotkeysLeft": [
+    {
+      "hotkey": "空白鍵",
+      "desc": "開啟 / 關閉功能選單"
+    },
+    {
+      "hotkey": "ESC",
+      "desc": "關閉功能選單"
+    },
+    {
+      "hotkey": "/",
+      "desc": "切換至搜尋框"
+    }
+  ],
+  "hotkeysRight": [
+    {
+      "hotkey": "",
+      "desc": "移調選單開啟時"
+    },
+    {
+      "hotkey": "← →",
+      "desc": "移調"
+    },
+    {
+      "hotkey": "↓",
+      "desc": "移回初始調"
+    },
+    {
+      "hotkey": "",
+      "desc": "在搜尋框內"
+    },
+    {
+      "hotkey": "Enter",
+      "desc": "搜尋"
+    },
+    {
+      "hotkey": "ESC",
+      "desc": "跳出搜尋框"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import SheetPopup from './SheetPopup.vue';
 import FontSizePopup from './FontSizePopup.vue';
 import SettingsPopup from './SettingsPopup.vue';
 import MenuPopup from './MenuPopup.vue';
+import HotkeyPopup from './HotkeyPopup.vue';
 
 const store = useStore();
 
@@ -21,30 +22,31 @@ const props = defineProps({
           icon="music-note-beamed"
           stroke=".05rem"
           :active="store.isPopupShow.sheet"
-          @click="store.openPopup('sheet')"
+          @click="store.togglePopup('sheet')"
         />
         <ToolbarIcon
           icon="type"
           stroke=".05rem"
           :active="store.isPopupShow.font"
-          @click="store.openPopup('font')"
+          @click="store.togglePopup('font')"
         />
         <ToolbarIcon
           icon="gear-wide-connected"
           :active="store.isPopupShow.settings"
-          @click="store.openPopup('settings')"
+          @click="store.togglePopup('settings')"
         />
         <ToolbarIcon
           icon="list"
           stroke=".05rem"
           :active="store.isPopupShow.menu"
-          @click="store.openPopup('menu')"
+          @click="store.togglePopup('menu')"
         />
         <!-- Popups -->
         <SheetPopup />
         <FontSizePopup />
         <SettingsPopup />
         <MenuPopup />
+        <HotkeyPopup />
       </div>
     </div>
   </Transition>

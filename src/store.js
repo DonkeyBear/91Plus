@@ -15,7 +15,9 @@ export const useStore = defineStore('store', {
         sheet: false,
         font: false,
         settings: false,
-        menu: false
+        menu: false,
+        // 選單內功能
+        hotkey: false
       },
       // ####################
       // 偏好設定相關狀態
@@ -75,8 +77,8 @@ export const useStore = defineStore('store', {
         this.isPopupShow[popup] = false;
       }
     },
-    /** @param {'sheet'|'settings'|'menu'} name */
-    openPopup(name) {
+    /** @param {'sheet'|'font'|'settings'|'menu'|'hotkey'} name */
+    togglePopup(name) {
       for (const popup in this.isPopupShow) {
         if (popup === name) {
           this.isPopupShow[popup] = !this.isPopupShow[popup];
