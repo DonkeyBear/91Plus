@@ -57,6 +57,8 @@ const backToPreviousPage = () => {
 .header-container {
   @include toolbar-container;
   border-radius: 0 0 1rem 1rem;
+  border: 1px solid $toolbar-border-color;
+  border-top: 0;
 
   input {
     flex-grow: 1;

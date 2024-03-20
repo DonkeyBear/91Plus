@@ -66,5 +66,7 @@ const props = defineProps({
   @include toolbar-container;
   border-radius: 1rem 1rem 0 0;
   padding-bottom: .75rem;
+  border: 1px solid $toolbar-border-color;
+  border-bottom: 0;
 }
 </style>
