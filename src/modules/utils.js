@@ -147,3 +147,35 @@ export function switchInstrument(instrument) {
     }
   }
 }
+
+/**
+ * 取得 91 譜的和弦圖相關資料
+ * @returns {Object}
+ */
+export function getChordShapes() {
+  const chordShapes = window.chord_shapes;
+  return chordShapes;
+}
+
+/**
+ * 取得當前譜面上所有用到的和弦名稱
+ * @returns {String[]}
+ */
+export function getChordList() {
+  const chordList = [];
+  $('#tone_z .tf').each(function () {
+    chordList.push($(this).text());
+  })
+  return [...new Set(chordList)];
+}
+
+/**
+ * 將和弦名稱轉換為 `getChordShapes()` 的鍵值格式
+ * @param {String} chordName
+ * @returns {String}
+ */
+export function convertChordName(chordName) {
+  const root = chordName.match(/^[A-G]#?/)[0];
+  const rest = chordName.replace(/^[A-G]#?/, '');
+  return `${rest} ${root}`;
+}

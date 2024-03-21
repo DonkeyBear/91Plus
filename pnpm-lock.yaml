@@ -11,6 +11,9 @@ dependencies:
   pinia-plugin-persistedstate:
     specifier: ^3.2.0
     version: 3.2.0(pinia@2.1.7)
+  vexchords:
+    specifier: ^1.2.0
+    version: 1.2.0
   vue:
     specifier: ^3.3.10
     version: 3.3.10
@@ -257,6 +260,10 @@ packages:
 
   /@jridgewell/sourcemap-codec@1.4.15:
     resolution: {integrity: sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==}
+
+  /@svgdotjs/svg.js@3.2.0:
+    resolution: {integrity: sha512-Tr8p+QVP7y+QT1GBlq1Tt57IvedVH8zCPoYxdHLX0Oof3a/PqnC/tXAkVufv1JQJfsDHlH/UrjcDfgxSofqSNA==}
+    dev: false
 
   /@vitejs/plugin-vue@4.5.1(vite@4.5.1)(vue@3.3.10):
     resolution: {integrity: sha512-DaUzYFr+2UGDG7VSSdShKa9sIWYBa1LL8KC0MNOf2H5LjcTPjob0x8LbkqXWmAtbANJCkpiQTj66UVcQkN2s3g==}
@@ -891,6 +898,12 @@ packages:
     resolution: {integrity: sha512-KK8xQ1mkzZeg9inewmFVDNkg3l5LUhoq9kN6iWYB/CC9YMG8HA+c1Q8HwDe6dEX7kErrEVNVBO3fWsVq5iDgtw==}
     engines: {node: '>=8'}
     dev: true
+
+  /vexchords@1.2.0:
+    resolution: {integrity: sha512-ObhyFjGiN4pj+oFBGmCa9/geY6H6xqbEipTp1k8de7UXjvv30CriHjD8FR3Lf3jo1vSVUCePSJd7024qmJyNlA==}
+    dependencies:
+      '@svgdotjs/svg.js': 3.2.0
+    dev: false
 
   /vite-plugin-monkey@3.5.0(vite@4.5.1):
     resolution: {integrity: sha512-NS3qiLvnzyRPsbfanbnzMGk33rCmN1iGs2RkGykl7H5aCwZhpb7nyUSOy3CD8haP8rqTQ9BS23BLprV5MRIy/Q==}

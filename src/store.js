@@ -13,6 +13,7 @@ export const useStore = defineStore('store', {
       isToolbarsShow: false,
       isPopupShow: {
         sheet: false,
+        chord: false,
         font: false,
         settings: false,
         menu: false,
@@ -77,7 +78,7 @@ export const useStore = defineStore('store', {
         this.isPopupShow[popup] = false;
       }
     },
-    /** @param {'sheet'|'font'|'settings'|'menu'|'hotkey'} name */
+    /** @param {'sheet'|'chord'|'font'|'settings'|'menu'|'hotkey'} name */
     togglePopup(name) {
       for (const popup in this.isPopupShow) {
         if (popup === name) {

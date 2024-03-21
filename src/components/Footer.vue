@@ -2,6 +2,7 @@
 import { useStore } from '../store';
 import ToolbarIcon from './ToolbarIcon.vue';
 import SheetPopup from './SheetPopup.vue';
+import ChordPopup from './ChordPopup.vue';
 import FontSizePopup from './FontSizePopup.vue';
 import SettingsPopup from './SettingsPopup.vue';
 import MenuPopup from './MenuPopup.vue';
@@ -25,6 +26,11 @@ const props = defineProps({
           @click="store.togglePopup('sheet')"
         />
         <ToolbarIcon
+          icon="table"
+          :active="store.isPopupShow.chord"
+          @click="store.togglePopup('chord')"
+        />
+        <ToolbarIcon
           icon="type"
           stroke=".05rem"
           :active="store.isPopupShow.font"
@@ -43,6 +49,7 @@ const props = defineProps({
         />
         <!-- Popups -->
         <SheetPopup />
+        <ChordPopup />
         <FontSizePopup />
         <SettingsPopup />
         <MenuPopup />
