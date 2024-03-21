@@ -1,6 +1,7 @@
 import ChordSheetElement from './ChordSheetElement';
 import ChordSheetDocument from './ChordSheetDocument';
 import { StoreHandler } from './StoreHandler';
+import { unsafeWindow } from '$';
 
 /** 若樂譜頁面為電腦版，跳轉至行動版 */
 export function redirect() {
@@ -153,7 +154,7 @@ export function switchInstrument(instrument) {
  * @returns {Object}
  */
 export function getChordShapes() {
-  const chordShapes = window.chord_shapes;
+  const chordShapes = unsafeWindow.chord_shapes;
   return chordShapes;
 }
 
