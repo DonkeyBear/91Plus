@@ -11,6 +11,7 @@ const search = () => {
   if (!searchText.value) { return }
   const url = `https://www.91pu.com.tw/plus/search.php?keyword=${searchText.value}`;
   window.open(url, '_blank').focus();
+  searchText.value = '';
 };
 
 const backToPreviousPage = () => { history.back() };
