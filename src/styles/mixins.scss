@@ -38,4 +38,10 @@
   padding: 1rem 2rem;
   border-radius: 1rem;
   margin: .5rem 1rem;
+  max-height: 50vh;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
