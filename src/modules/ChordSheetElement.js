@@ -36,7 +36,7 @@ export default class ChordSheetElement {
         .replaceAll(/{_|{=|=}|_}/g, '')
         .replaceAll(/[a-zA-Z0-9#/]+/g, /* html */`<span class="tf">$&</span>`); // eslint-disable-line quotes
     });
-  };
+  }
 
   /** @returns {ChordSheetElement} */
   unformatUnderlines() {

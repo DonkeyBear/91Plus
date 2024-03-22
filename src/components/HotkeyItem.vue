@@ -16,7 +16,7 @@ const hotkeyList = props.hotkey.split(' ');
       {{ desc }}
     </div>
     <div class="hotkeys" v-if="hotkey">
-      <kbd v-for="key of hotkeyList">{{ key }}</kbd>
+      <kbd v-for="key of hotkeyList" :key="`${key}_${hotkey}_${desc}`">{{ key }}</kbd>
     </div>
     <div class="hr" v-else></div>
   </div>

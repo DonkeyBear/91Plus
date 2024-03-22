@@ -25,7 +25,7 @@ onMounted(() => {
         ...barre,
         fromString: barre.from_string,
         toString: barre.to_string
-      }
+      };
     }),
     chord: chordShape.chord.map(([stringNum, fretNum]) => {
       const raw = [stringNum, fretNum];
@@ -35,7 +35,7 @@ onMounted(() => {
       newFretNum -= chordShape.position_text || 0;
       return [stringNum, newFretNum];
     })
-  }
+  };
   nextTick(() => {
     const width = chordRef.value.clientWidth;
     const chordBoxSelector = `.chord-chart[chord-name="${props.chord}"]`;

@@ -125,7 +125,7 @@ export function handleEvents() {
     const tagName = event.target.tagName.toLowerCase();
     if (excludedTags.includes(tagName)) { return }
     StoreHandler.handleKeydown(event.key);
-  })
+  });
 }
 
 /**
@@ -166,7 +166,7 @@ export function getChordList() {
   const chordList = [];
   $('#tone_z .tf').each(function () {
     chordList.push($(this).text());
-  })
+  });
   return [...new Set(chordList)];
 }
 

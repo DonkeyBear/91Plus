@@ -3,12 +3,12 @@ import { ref, watch } from 'vue';
 import { useStore } from '../store';
 import { getChordList } from '../modules/utils';
 import ChordChart from './ChordChart.vue';
-import BootstrapIcon from './BootstrapIcon.vue'
+import BootstrapIcon from './BootstrapIcon.vue';
 
 const store = useStore();
 
 // 在開啟這個 Popup 的時候才繪製和弦
-const chordList = ref([])
+const chordList = ref([]);
 watch(store.isPopupShow, () => {
   if (!store.isPopupShow.chord) { return }
 

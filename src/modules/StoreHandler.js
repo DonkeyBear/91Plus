@@ -59,7 +59,7 @@ export class StoreHandler {
 
   static handleKeydown(key) {
     const store = useStore();
-    
+
     switch (key) {
       case ' ': {
         store.toggleToolbars();
@@ -85,7 +85,7 @@ export class StoreHandler {
         break;
       }
     }
-    
+
     if (store.isPopupShow.sheet) {
       switch (key) {
         case 'ArrowLeft': {

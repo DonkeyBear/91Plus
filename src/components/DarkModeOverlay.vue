@@ -1,12 +1,12 @@
 <script setup>
 const props = defineProps({
   active: Boolean
-})
+});
 </script>
 
 <template>
   <Transition name="fade">
-    <div id="dark-mode-overlay" v-show="active"></div>
+    <div id="dark-mode-overlay" v-show="props.active"></div>
   </Transition>
 </template>
 

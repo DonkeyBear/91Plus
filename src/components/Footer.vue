@@ -17,7 +17,7 @@ const props = defineProps({
 
 <template>
   <Transition name="slide">
-    <div id="plus91-footer" v-show="active">
+    <div id="plus91-footer" v-show="props.active">
       <div class="footer-container">
         <ToolbarIcon
           icon="music-note-beamed"

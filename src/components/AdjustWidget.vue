@@ -40,24 +40,24 @@ const props = defineProps({
   <div class="adjust-widget">
     <button
       class="adjust-button adjust-button-left"
-      @click="onclickLeft"
-      :disabled="disabledLeft"
+      @click="props.onclickLeft"
+      :disabled="props.disabledLeft"
     >
-      <BootstrapIcon :icon="iconLeft" :color="color" :size="size" />
+      <BootstrapIcon :icon="props.iconLeft" :color="props.color" :size="props.size" />
     </button>
     <button
       class="adjust-button adjust-button-middle"
-      @click="onclickMiddle"
-      :disabled="disabledMiddle"
+      @click="props.onclickMiddle"
+      :disabled="props.disabledMiddle"
     >
       <slot></slot>
     </button>
     <button
       class="adjust-button adjust-button-right"
-      @click="onclickRight"
-      :disabled="disabledRight"
+      @click="props.onclickRight"
+      :disabled="props.disabledRight"
     >
-      <BootstrapIcon :icon="iconRight" :color="color" :size="size" />
+      <BootstrapIcon :icon="props.iconRight" :color="props.color" :size="props.size" />
     </button>
   </div>
 </template>

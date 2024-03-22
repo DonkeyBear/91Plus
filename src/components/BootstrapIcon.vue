@@ -24,7 +24,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <i :class="`bi bi-${icon}`" :active="active"></i>
+  <i :class="`bi bi-${props.icon}`" :active="props.active"></i>
 </template>
 
 <style scoped lang="scss">

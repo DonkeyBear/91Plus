@@ -11,12 +11,12 @@ const searchOnYoutube = () => {
   const artist = chordSheetDocument.getSinger();
   const url = `https://www.youtube.com/results?search_query=${title}+${artist}`;
   window.open(url, '_blank').focus();
-}
+};
 
 const goToGithubPage = () => {
   const url = 'https://github.com/DonkeyBear/91Plus/blob/main/README.md';
   window.open(url, '_blank').focus();
-}
+};
 </script>
 
 <template>

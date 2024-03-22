@@ -38,7 +38,7 @@ export const useStore = defineStore('store', {
       originalFontSize: 0,
       /** 在 `StoreHandler` 裡賦值，單位為 px */
       originalLineHeight: 0
-    }
+    };
   },
   persist: {
     key: 'plus91-preferences',
@@ -47,10 +47,10 @@ export const useStore = defineStore('store', {
     serialize: stringify,
     paths: ['isDarkMode', 'agreeToArchiveSheet'],
     beforeRestore() {
-      console.log('[91 Plus] 讀取偏好設置中')
+      console.log('[91 Plus] 讀取偏好設置中');
     },
     afterRestore() {
-      console.log('[91 Plus] 偏好設置讀取完畢')
+      console.log('[91 Plus] 偏好設置讀取完畢');
     },
     debug: true
   },
@@ -97,4 +97,4 @@ export const useStore = defineStore('store', {
       this.transpose = newTranspose;
     }
   }
-})
+});

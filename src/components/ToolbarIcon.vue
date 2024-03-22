@@ -16,20 +16,15 @@ const props = defineProps({
   },
   color: {
     type: String,
-    default: 'whitesmoke'    
+    default: 'whitesmoke'
   }
 });
 </script>
 
 <template>
   <div class="toolbar-icon">
-    <BootstrapIcon
-      :icon="icon"
-      :color="color"
-      size="1.3rem"
-      :stroke="stroke"
-      :active="active"
-    />
+    <BootstrapIcon :icon="props.icon" :color="props.color" size="1.3rem" :stroke="props.stroke"
+      :active="props.active" />
   </div>
 </template>
 

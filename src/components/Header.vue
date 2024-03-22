@@ -11,16 +11,14 @@ const search = () => {
   if (!searchText.value) { return }
   const url = `https://www.91pu.com.tw/plus/search.php?keyword=${searchText.value}`;
   window.open(url, '_blank').focus();
-}
+};
 
-const backToPreviousPage = () => {
-  history.back();
-}
+const backToPreviousPage = () => { history.back() };
 </script>
 
 <template>
   <Transition name="slide">
-    <div id="plus91-header" v-show="active">
+    <div id="plus91-header" v-show="props.active">
       <div class="header-container">
         <ToolbarIcon
           icon="chevron-left"
