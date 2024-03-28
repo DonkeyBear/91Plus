@@ -23,7 +23,8 @@ export default defineConfig({
       },
       build: {
         externalGlobals: {
-          vue: cdn.jsdelivr('Vue', 'dist/vue.global.prod.js')
+          vue: cdn.jsdelivr('Vue', 'dist/vue.global.prod.js'),
+          html2canvas: cdn.jsdelivr('html2canvas', 'dist/html2canvas.min.js')
         }
       }
     })

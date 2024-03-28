@@ -1,7 +1,7 @@
 {
   "name": "91plus",
   "private": true,
-  "version": "1.7.5",
+  "version": "1.8.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,6 +11,7 @@
     "v": "npm version --no-git-tag-version"
   },
   "dependencies": {
+    "html2canvas": "^1.4.1",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.0",
     "vexchords": "^1.2.0",
