@@ -55,9 +55,12 @@ const backToPreviousPage = () => { history.back() };
 
 .header-container {
   @include toolbar-container;
-  border-radius: 0 0 1rem 1rem;
-  border: 1px solid $toolbar-border-color;
-  border-top: 0;
+
+  @include breakpoint-large {
+    border-radius: 0 0 1rem 1rem;
+  }
+
+  border-bottom: 1px solid $toolbar-border-color;
 
   input {
     flex-grow: 1;
