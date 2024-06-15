@@ -26,6 +26,7 @@ export default defineConfig({
           vue: cdn.jsdelivr('Vue', 'dist/vue.global.prod.js'),
           // pinia: cdn.jsdelivr('pinia', 'dist/pinia.iife.min.js'),
           // 'pinia-plugin-persistedstate': cdn.jsdelivr('pinia-plugin-persistedstate', 'dist/index.min.js'),
+          'ua-parser-js': cdn.jsdelivr('ua-parser-js', 'dist/ua-parser.pack.min.js'),
           zipson: cdn.jsdelivr('zipson', 'dist/zipson.min.js'),
           html2canvas: cdn.jsdelivr('html2canvas', 'dist/html2canvas.min.js'),
           vexchords: cdn.jsdelivr('vexchords', 'dist/vexchords.dev.min.js')

@@ -2,6 +2,7 @@ import ChordSheetElement from './ChordSheetElement';
 import ChordSheetDocument from './ChordSheetDocument';
 import { StoreHandler } from './StoreHandler';
 import { unsafeWindow } from '$';
+import { UAParser } from 'ua-parser-js';
 
 /** 若樂譜頁面為電腦版，跳轉至行動版 */
 export function redirect() {
@@ -180,3 +181,6 @@ export function convertChordName(chordName) {
   const rest = chordName.replace(/^[A-G]#?/, '');
   return `${rest} ${root}`;
 }
+
+/** 分析過後的 User Agent */
+export const userAgent = UAParser(navigator.userAgent);
