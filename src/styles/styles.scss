@@ -47,7 +47,9 @@ footer, // 彈出式頁尾
 .setint .hr:nth-child(4), // 功能列上多餘的按鈕
 .setint .hr:nth-child(5),
 .setint .hr:nth-child(6),
-.adsbygoogle {
-  // 其餘的Google廣告
+.adsbygoogle, // 其餘的Google廣告
+[class^=AD2M], // AD2M廣告
+[id^=adGeek] // adGeek廣告
+{
   display: none !important;
 }
