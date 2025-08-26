@@ -62,7 +62,7 @@ const store = useStore();
   border-radius: .25rem;
   margin-top: 1rem;
   background: white;
-  
+
   .instrument-select-button {
     width: calc(100% / 3);
     border: 0;
@@ -78,7 +78,7 @@ const store = useStore();
       border: 0;
       border-radius: 0 .25rem .25rem 0;
     }
-    
+
     &:first-child {
       border-radius: .25rem 0 0 .25rem;
     }

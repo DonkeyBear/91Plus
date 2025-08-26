@@ -13,6 +13,14 @@ export class StoreHandler {
   }
 
   initState() {
+    // 儲存樂譜資訊
+    const sheetId = location.pathname.match(/(\w+)\.html$/)[1];
+    const sheetTitle = $('h1').text().trim();
+    const sheetArtist = $('div.data > a').text().trim();
+    this.#store.sheetId = sheetId;
+    this.#store.sheetTitle = sheetTitle;
+    this.#store.sheetArtist = sheetArtist;
+
     // 儲存初始 Capo 和調號
     const capoSelected = $('.capo .select').eq(0).text().trim();
     const originalCapo = +capoSelected.split(/\s*\/\s*/)[0]; // CAPO

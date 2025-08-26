@@ -18,16 +18,24 @@ export const useStore = defineStore('store', {
         settings: false,
         menu: false,
         // 選單內功能
-        hotkey: false
+        hotkey: false,
+        collection: false
       },
       // ####################
       // 偏好設定相關狀態
       // ####################
       agreeToArchiveSheet: true,
+      collectedSheets: [],
       // ####################
       // 譜面相關狀態
       // ####################
       transpose: 0,
+      /** 在 `StoreHandler` 裡賦值 */
+      sheetId: null,
+      /** 在 `StoreHandler` 裡賦值 */
+      sheetTitle: '',
+      /** 在 `StoreHandler` 裡賦值 */
+      sheetArtist: '',
       /** 在 `StoreHandler` 裡賦值 */
       originalCapo: 0,
       /** 在 `StoreHandler` 裡賦值，HTML 格式 */
@@ -45,7 +53,7 @@ export const useStore = defineStore('store', {
     storage: MonkeyStorage,
     deserialize: parse,
     serialize: stringify,
-    paths: ['isDarkMode', 'agreeToArchiveSheet'],
+    paths: ['isDarkMode', 'agreeToArchiveSheet', 'collectedSheets'],
     beforeRestore() {
       console.log('[91 Plus] 讀取偏好設置中');
     },
@@ -60,9 +68,31 @@ export const useStore = defineStore('store', {
     },
     currentKey() {
       return new Chord(this.originalKey).transpose(-this.transpose).toFormattedString();
+    },
+    isCurrentSheetCollected() {
+      return this.collectedSheets.some((sheet) => {
+        return sheet.id === this.sheetId;
+      });
     }
   },
   actions: {
+    toggleCollected(sheetId = null) {
+      const id = sheetId ?? this.sheetId;
+      const isSheetCollected = this.collectedSheets.some((sheet) => sheet.id === id);
+
+      if (isSheetCollected) {
+        this.collectedSheets = this.collectedSheets.filter((sheet) => {
+          return sheet.id !== id;
+        });
+      } else {
+        this.collectedSheets.push({
+          id: this.sheetId,
+          title: this.sheetTitle,
+          artist: this.sheetArtist,
+          url: location.href
+        });
+      }
+    },
     toggleToolbars() {
       if (this.isToolbarsShow) {
         // 關閉 Toolbars 時，把所有的 Modal 跟 Popup 一起關掉
@@ -78,7 +108,7 @@ export const useStore = defineStore('store', {
         this.isPopupShow[popup] = false;
       }
     },
-    /** @param {'sheet'|'chord'|'font'|'settings'|'menu'|'hotkey'} name */
+    /** @param {'sheet'|'chord'|'font'|'settings'|'menu'|'hotkey'|'collection'} name */
     togglePopup(name) {
       for (const popup in this.isPopupShow) {
         if (popup === name) {

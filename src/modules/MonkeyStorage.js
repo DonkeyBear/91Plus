@@ -2,7 +2,7 @@ import { GM_getValue, GM_setValue } from '$';
 
 export default class MonkeyStorage {
   /**
-   * @param {String} key 
+   * @param {String} key
    * @returns {String|null}
    */
   static getItem(key) {
@@ -14,8 +14,8 @@ export default class MonkeyStorage {
   }
 
   /**
-   * @param {String} key 
-   * @param {String} value 
+   * @param {String} key
+   * @param {String} value
    * @returns {void}
    */
   static setItem(key, value) {

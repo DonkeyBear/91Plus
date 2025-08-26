@@ -114,7 +114,7 @@ export function initMutationObserver() {
 
 /**
  * 當動態讀取完畢時執行 Callback
- * @param {Function} callback 
+ * @param {Function} callback
  */
 export function onDomReady(callback) {
   $('body').on('mutation.done', callback);
@@ -131,7 +131,7 @@ export function handleEvents() {
 
 /**
  * 切換和弦譜旁顯示的和弦類型（91 譜原生）
- * @param {'guitar'|'ukulele'} instrument 
+ * @param {'guitar'|'ukulele'} instrument
  */
 export function switchInstrument(instrument) {
   switch (instrument) {

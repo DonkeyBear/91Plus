@@ -7,6 +7,7 @@ import FontSizePopup from './FontSizePopup.vue';
 import SettingsPopup from './SettingsPopup.vue';
 import MenuPopup from './MenuPopup.vue';
 import HotkeyPopup from './HotkeyPopup.vue';
+import CollectionPopup from './CollectionPopup.vue';
 
 const store = useStore();
 
@@ -19,6 +20,12 @@ const props = defineProps({
   <Transition name="slide">
     <div id="plus91-footer" v-show="props.active">
       <div class="footer-container">
+        <ToolbarIcon
+          :icon="store.isCurrentSheetCollected ? 'star-fill' : 'star'"
+          text="收藏"
+          :class="{ collected: store.isCurrentSheetCollected }"
+          @click="store.toggleCollected"
+        />
         <ToolbarIcon
           icon="music-note-beamed"
           text="譜面"
@@ -59,6 +66,7 @@ const props = defineProps({
         <SettingsPopup />
         <MenuPopup />
         <HotkeyPopup />
+        <CollectionPopup />
       </div>
     </div>
   </Transition>
@@ -66,6 +74,11 @@ const props = defineProps({
 
 <style scoped lang="scss">
 @import '../styles/mixins.scss';
+@import '../styles/variables.scss';
+
+.collected {
+  color: $primary-color;
+}
 
 @include transition-slide(down);
 

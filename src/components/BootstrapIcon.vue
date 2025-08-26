@@ -32,7 +32,7 @@ const props = defineProps({
   color: v-bind(color);
   font-size: v-bind(size);
   -webkit-text-stroke: v-bind(stroke) v-bind(color);
-  
+
   &::before {
     transition: text-shadow .2s;
   }

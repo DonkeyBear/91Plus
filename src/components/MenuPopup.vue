@@ -34,6 +34,7 @@ const goToGithubPage = () => {
   <Transition name="slide-and-fade">
     <div id="plus91-menu-popup" v-show="store.isPopupShow.menu">
       <div class="menu-popup-container">
+        <MenuButton icon="star" name="我的收藏" :color="BUTTON_COLOR" @click="() => { store.togglePopup('collection') }" />
         <MenuButton icon="keyboard" name="快捷鍵" :color="BUTTON_COLOR" @click="() => { store.togglePopup('hotkey') }" />
         <MenuButton icon="file-earmark-image" name="擷取為圖片" :color="BUTTON_COLOR" @click="captureAsImage" />
         <MenuButton icon="youtube" name="搜尋 YouTube" :color="BUTTON_COLOR" @click="searchOnYoutube" />
