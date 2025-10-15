@@ -53,7 +53,7 @@ export const useStore = defineStore('store', {
     storage: MonkeyStorage,
     deserialize: parse,
     serialize: stringify,
-    paths: ['isDarkMode', 'agreeToArchiveSheet'],
+    pick: ['isDarkMode', 'agreeToArchiveSheet', 'isDevMode'],
     beforeRestore() {
       Logger.log('讀取偏好設置中')
     },
