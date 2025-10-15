@@ -8,7 +8,7 @@ const props = defineProps({
   },
   text: {
     type: String,
-    required: true,
+    default: '',
   },
   stroke: {
     type: String,
