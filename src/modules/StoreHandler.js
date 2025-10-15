@@ -39,6 +39,18 @@ export class StoreHandler {
     return this
   }
 
+  /**
+   * @param {'log'|'warn'|'error'} level
+   * @param {...any} args
+   */
+  addLog(level, ...args) {
+    this.#store.addLog(level, ...args)
+  }
+
+  clearLogs() {
+    this.#store.clearLogs()
+  }
+
   /** 當 `#store.transpose` 變動時，將譜面上的和弦進行移調 */
   #watchTranspose() {
     watch(() => {

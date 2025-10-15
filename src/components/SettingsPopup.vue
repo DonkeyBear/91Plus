@@ -16,6 +16,10 @@ const store = useStore()
           <span>協助測試雲端備份樂譜功能</span>
           <input v-model="store.agreeToArchiveSheet" type="checkbox">
         </label>
+        <label class="setting-item">
+          <span>開發者模式</span>
+          <input v-model="store.isDevMode" type="checkbox">
+        </label>
       </div>
     </div>
   </Transition>
