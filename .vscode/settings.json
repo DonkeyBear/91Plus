@@ -98,16 +98,28 @@
     "postcss"
   ],
   "cSpell.words": [
+    "adsbygoogle",
+    "antfu",
+    "antifeature",
+    "backplace",
+    "bottomad",
     "darkmode",
     "mtitle",
     "persistedstate",
+    "pinia",
     "schord",
+    "setint",
+    "templets",
+    "tfunc",
     "tinfo",
     "tkinfo",
     "ukschord",
     "unformat",
     "vexchords",
+    "viptone",
     "vite",
+    "vitejs",
+    "wmask",
     "zipson"
   ]
 }
