@@ -1,11 +1,11 @@
 <script setup>
-import TriggerOverlay from './components/TriggerOverlay.vue';
-import AppFooter from './components/AppFooter.vue';
-import AppHeader from './components/AppHeader.vue';
-import DarkModeOverlay from './components/DarkModeOverlay.vue';
-import { useStore } from './store';
+import AppFooter from './components/AppFooter.vue'
+import AppHeader from './components/AppHeader.vue'
+import DarkModeOverlay from './components/DarkModeOverlay.vue'
+import TriggerOverlay from './components/TriggerOverlay.vue'
+import { useStore } from './store'
 
-const store = useStore();
+const store = useStore()
 </script>
 
 <template>

@@ -1,5 +1,5 @@
-@import "./variables.scss";
-@import "./transitions.scss";
+@import './variables.scss';
+@import './transitions.scss';
 
 @mixin toolbar {
   z-index: $z-toolbars;
@@ -14,7 +14,7 @@
   width: min(100vw, 768px);
   background: $toolbar-bg-color;
   backdrop-filter: blur(3px);
-  padding: .25rem .75rem;
+  padding: 0.25rem 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -37,7 +37,7 @@
   border: 1px solid lightgray;
   padding: 1rem 2rem;
   border-radius: 1rem;
-  margin: .5rem 1rem;
+  margin: 0.5rem 1rem;
   max-height: 50vh;
   overflow-y: scroll;
 

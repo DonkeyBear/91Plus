@@ -1,7 +1,7 @@
-import { defineStore } from 'pinia';
-import Chord from './modules/Chord';
-import MonkeyStorage from './modules/MonkeyStorage';
-import { parse, stringify } from 'zipson';
+import { defineStore } from 'pinia'
+import { parse, stringify } from 'zipson'
+import Chord from './modules/Chord'
+import MonkeyStorage from './modules/MonkeyStorage'
 
 export const useStore = defineStore('store', {
   state() {
@@ -18,7 +18,7 @@ export const useStore = defineStore('store', {
         settings: false,
         menu: false,
         // 選單內功能
-        hotkey: false
+        hotkey: false,
       },
       // ####################
       // 偏好設定相關狀態
@@ -37,8 +37,8 @@ export const useStore = defineStore('store', {
       /** 在 `StoreHandler` 裡賦值，單位為 px */
       originalFontSize: 0,
       /** 在 `StoreHandler` 裡賦值，單位為 px */
-      originalLineHeight: 0
-    };
+      originalLineHeight: 0,
+    }
   },
   persist: {
     key: 'plus91-preferences',
@@ -47,54 +47,56 @@ export const useStore = defineStore('store', {
     serialize: stringify,
     paths: ['isDarkMode', 'agreeToArchiveSheet'],
     beforeRestore() {
-      console.log('[91 Plus] 讀取偏好設置中');
+      console.log('[91 Plus] 讀取偏好設置中')
     },
     afterRestore() {
-      console.log('[91 Plus] 偏好設置讀取完畢');
+      console.log('[91 Plus] 偏好設置讀取完畢')
     },
-    debug: true
+    debug: true,
   },
   getters: {
     currentCapo() {
-      return this.originalCapo + this.transpose;
+      return this.originalCapo + this.transpose
     },
     currentKey() {
-      return new Chord(this.originalKey).transpose(-this.transpose).toFormattedString();
-    }
+      return new Chord(this.originalKey).transpose(-this.transpose).toFormattedString()
+    },
   },
   actions: {
     toggleToolbars() {
       if (this.isToolbarsShow) {
         // 關閉 Toolbars 時，把所有的 Modal 跟 Popup 一起關掉
-        this.closePopups();
-      } else {
-        // 開啟 Toolbars 時，將移調 Popup 一同打開
-        this.isPopupShow.sheet = true;
+        this.closePopups()
       }
-      this.isToolbarsShow = !this.isToolbarsShow;
+      else {
+        // 開啟 Toolbars 時，將移調 Popup 一同打開
+        this.isPopupShow.sheet = true
+      }
+      this.isToolbarsShow = !this.isToolbarsShow
     },
     closePopups() {
       for (const popup in this.isPopupShow) {
-        this.isPopupShow[popup] = false;
+        this.isPopupShow[popup] = false
       }
     },
     /** @param {'sheet'|'chord'|'font'|'settings'|'menu'|'hotkey'} name */
     togglePopup(name) {
       for (const popup in this.isPopupShow) {
         if (popup === name) {
-          this.isPopupShow[popup] = !this.isPopupShow[popup];
-        } else {
-          this.isPopupShow[popup] = false;
+          this.isPopupShow[popup] = !this.isPopupShow[popup]
+        }
+        else {
+          this.isPopupShow[popup] = false
         }
       }
     },
     plusTranspose(numberToPlus) {
-      let newTranspose = this.transpose + numberToPlus;
-      const newCapo = this.originalCapo + newTranspose;
+      let newTranspose = this.transpose + numberToPlus
+      const newCapo = this.originalCapo + newTranspose
       if (newCapo === 12 || newCapo === -12) {
-        newTranspose = -this.originalCapo;
+        newTranspose = -this.originalCapo
       }
-      this.transpose = newTranspose;
-    }
-  }
-});
+      this.transpose = newTranspose
+    },
+  },
+})

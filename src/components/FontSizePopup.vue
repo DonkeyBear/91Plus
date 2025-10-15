@@ -1,16 +1,16 @@
 <script setup>
-import { computed } from 'vue';
-import { useStore } from '../store';
-import AdjustWidget from './AdjustWidget.vue';
+import { computed } from 'vue'
+import { useStore } from '../store'
+import AdjustWidget from './AdjustWidget.vue'
 
-const store = useStore();
+const store = useStore()
 
-const getFontSize = computed(() => { return store.originalFontSize + store.fontSizeDelta });
+const getFontSize = computed(() => { return store.originalFontSize + store.fontSizeDelta })
 </script>
 
 <template>
   <Transition name="slide-and-fade">
-    <div id="plus91-font-popup" v-show="store.isPopupShow.font">
+    <div v-show="store.isPopupShow.font" id="plus91-font-popup">
       <div class="font-popup-container">
         <AdjustWidget
           :onclick-left="() => { store.fontSizeDelta-- }"

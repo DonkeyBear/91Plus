@@ -1,5 +1,5 @@
 <template>
-  <div id="trigger-overlay"></div>
+  <div id="trigger-overlay" />
 </template>
 
 <style scoped lang="scss">

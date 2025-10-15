@@ -1,20 +1,20 @@
 <script setup>
-import { useStore } from '../store';
+import { useStore } from '../store'
 
-const store = useStore();
+const store = useStore()
 </script>
 
 <template>
   <Transition name="slide-and-fade">
-    <div id="plus91-settings-popup" v-show="store.isPopupShow.settings">
+    <div v-show="store.isPopupShow.settings" id="plus91-settings-popup">
       <div class="settings-popup-container">
         <label class="setting-item">
           <span>深色模式</span>
-          <input type="checkbox" v-model="store.isDarkMode">
+          <input v-model="store.isDarkMode" type="checkbox">
         </label>
         <label class="setting-item">
           <span>協助測試雲端備份樂譜功能</span>
-          <input type="checkbox" v-model="store.agreeToArchiveSheet">
+          <input v-model="store.agreeToArchiveSheet" type="checkbox">
         </label>
       </div>
     </div>
@@ -37,12 +37,12 @@ const store = useStore();
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: .5rem 1rem;
-    border-radius: .5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
     cursor: pointer;
 
     &:hover {
-      background: rgba($color: black, $alpha: .05);
+      background: rgba($color: black, $alpha: 0.05);
     }
   }
 }

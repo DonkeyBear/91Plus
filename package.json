@@ -1,8 +1,8 @@
 {
   "name": "91plus",
-  "private": true,
-  "version": "1.8.4",
   "type": "module",
+  "version": "1.8.4",
+  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -20,8 +20,10 @@
     "zipson": "^0.2.12"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^5.4.1",
     "@vitejs/plugin-vue": "^6.0.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.37.0",
+    "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-vue": "^9.23.0",
     "sass": "^1.93.2",
     "vite": "^7.1.10",

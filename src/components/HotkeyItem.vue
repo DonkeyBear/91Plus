@@ -2,23 +2,23 @@
 const props = defineProps({
   hotkey: {
     type: String,
-    required: false
+    required: false,
   },
-  desc: String
-});
+  desc: String,
+})
 
-const hotkeyList = props.hotkey.split(' ');
+const hotkeyList = props.hotkey.split(' ')
 </script>
 
 <template>
   <div class="hotkey-item">
-    <div class="desc" :class="{ 'title': !hotkey }">
+    <div class="desc" :class="{ title: !hotkey }">
       {{ desc }}
     </div>
-    <div class="hotkeys" v-if="hotkey">
+    <div v-if="hotkey" class="hotkeys">
       <kbd v-for="key of hotkeyList" :key="`${key}_${hotkey}_${desc}`">{{ key }}</kbd>
     </div>
-    <div class="hr" v-else></div>
+    <div v-else class="hr" />
   </div>
 </template>
 
@@ -29,18 +29,18 @@ const hotkeyList = props.hotkey.split(' ');
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 .25rem;
-  border-radius: .25rem;
+  padding: 0 0.25rem;
+  border-radius: 0.25rem;
   height: 1.4rem;
 
   &:nth-child(odd) {
-    background: rgba($color: black, $alpha: .025);
+    background: rgba($color: black, $alpha: 0.025);
   }
 }
 
 .desc {
   &.title {
-    font-size: .55rem;
+    font-size: 0.55rem;
     color: #999;
   }
 }
@@ -53,17 +53,17 @@ const hotkeyList = props.hotkey.split(' ');
   display: flex;
   flex-grow: 1;
   border-top: 1px solid lightgray;
-  margin-left: .25rem;
+  margin-left: 0.25rem;
 }
 
 kbd {
-  font-size: .6rem;
+  font-size: 0.6rem;
   border: solid lightgray;
-  border-width: 1px .1rem .15rem;
-  border-radius: .2rem;
-  padding: 0 .2rem;
-  letter-spacing: -.025rem;
+  border-width: 1px 0.1rem 0.15rem;
+  border-radius: 0.2rem;
+  padding: 0 0.2rem;
+  letter-spacing: -0.025rem;
   color: #666;
-  margin-left: .15rem;
+  margin-left: 0.15rem;
 }
 </style>

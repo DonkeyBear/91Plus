@@ -1,17 +1,19 @@
 <script setup>
-import ToolbarIcon from './ToolbarIcon.vue';
+import ToolbarIcon from './ToolbarIcon.vue'
 
 const props = defineProps({
   icon: String,
   name: String,
-  color: String
-});
+  color: String,
+})
 </script>
 
 <template>
   <div class="icon-button">
     <ToolbarIcon :icon="props.icon" :color="props.color" />
-    <div class="button-text">{{ props.name }}</div>
+    <div class="button-text">
+      {{ props.name }}
+    </div>
   </div>
 </template>
 
@@ -21,15 +23,15 @@ const props = defineProps({
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  padding: 0 .6rem .4rem;
-  border-radius: .25rem;
+  padding: 0 0.6rem 0.4rem;
+  border-radius: 0.25rem;
 
   &:hover {
-    background: rgba($color: black, $alpha: .025);
+    background: rgba($color: black, $alpha: 0.025);
   }
 
   .button-text {
-    font-size: .5rem;
+    font-size: 0.5rem;
     color: v-bind(color);
   }
 }

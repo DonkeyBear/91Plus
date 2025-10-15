@@ -1,23 +1,23 @@
 <script setup>
-import { useStore } from '../store';
-import ToolbarIcon from './ToolbarIcon.vue';
-import SheetPopup from './SheetPopup.vue';
-import ChordPopup from './ChordPopup.vue';
-import FontSizePopup from './FontSizePopup.vue';
-import SettingsPopup from './SettingsPopup.vue';
-import MenuPopup from './MenuPopup.vue';
-import HotkeyPopup from './HotkeyPopup.vue';
-
-const store = useStore();
+import { useStore } from '../store'
+import ChordPopup from './ChordPopup.vue'
+import FontSizePopup from './FontSizePopup.vue'
+import HotkeyPopup from './HotkeyPopup.vue'
+import MenuPopup from './MenuPopup.vue'
+import SettingsPopup from './SettingsPopup.vue'
+import SheetPopup from './SheetPopup.vue'
+import ToolbarIcon from './ToolbarIcon.vue'
 
 const props = defineProps({
-  active: Boolean
-});
+  active: Boolean,
+})
+
+const store = useStore()
 </script>
 
 <template>
   <Transition name="slide">
-    <div id="plus91-footer" v-show="props.active">
+    <div v-show="props.active" id="plus91-footer">
       <div class="footer-container">
         <ToolbarIcon
           icon="music-note-beamed"
@@ -81,7 +81,7 @@ const props = defineProps({
     border-radius: 1rem 1rem 0 0;
   }
 
-  padding-bottom: .75rem;
+  padding-bottom: 0.75rem;
   border-top: 1px solid $toolbar-border-color;
 }
 </style>

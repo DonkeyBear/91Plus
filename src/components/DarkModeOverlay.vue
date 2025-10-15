@@ -1,12 +1,12 @@
 <script setup>
 const props = defineProps({
-  active: Boolean
-});
+  active: Boolean,
+})
 </script>
 
 <template>
   <Transition name="fade">
-    <div id="dark-mode-overlay" v-show="props.active"></div>
+    <div v-show="props.active" id="dark-mode-overlay" />
   </Transition>
 </template>
 
@@ -16,7 +16,7 @@ const props = defineProps({
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .2s;
+  transition: opacity 0.2s;
 }
 
 .fade-enter-from,
@@ -27,7 +27,7 @@ const props = defineProps({
 #dark-mode-overlay {
   @include overlay;
   z-index: $z-dark-mode-overlay;
-  backdrop-filter: invert(1) hue-rotate(145deg) saturate(.75);
+  backdrop-filter: invert(1) hue-rotate(145deg) saturate(0.75);
   pointer-events: none;
 }
 </style>

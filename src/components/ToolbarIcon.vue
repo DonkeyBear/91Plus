@@ -1,28 +1,28 @@
 <script setup>
-import BootstrapIcon from './BootstrapIcon.vue';
+import BootstrapIcon from './BootstrapIcon.vue'
 
 const props = defineProps({
   icon: {
     type: String,
-    required: true
+    required: true,
   },
   text: {
     type: String,
-    required: true
+    required: true,
   },
   stroke: {
     type: String,
-    default: '0'
+    default: '0',
   },
   active: {
     type: Boolean,
-    default: false
+    default: false,
   },
   color: {
     type: String,
-    default: 'whitesmoke'
-  }
-});
+    default: 'whitesmoke',
+  },
+})
 </script>
 
 <template>
@@ -34,7 +34,9 @@ const props = defineProps({
       :stroke="props.stroke"
       :active="props.active"
     />
-    <div class="toolbar-icon-text">{{ props.text }}</div>
+    <div class="toolbar-icon-text">
+      {{ props.text }}
+    </div>
   </div>
 </template>
 
@@ -47,13 +49,13 @@ const props = defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .15rem;
+  gap: 0.15rem;
 }
 
 .toolbar-icon-text {
   color: color-mix(in srgb, v-bind(color) 70%, $toolbar-bg-color);
-  font-size: .5rem;
-  $spacing: .15rem;
+  font-size: 0.5rem;
+  $spacing: 0.15rem;
   letter-spacing: $spacing;
   margin-right: -$spacing; // 用於抵銷 letter-spacing 對最後一個字的影響
 }
