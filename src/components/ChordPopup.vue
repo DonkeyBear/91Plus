@@ -32,7 +32,9 @@ function refreshBanner() {
 // 在開啟這個 Popup 的時候才繪製和弦
 const chordList = ref([])
 watch(store.isPopupShow, () => {
-  if (!store.isPopupShow.chord) { return }
+  if (!store.isPopupShow.chord) {
+    return
+  }
 
   refreshBanner()
   chordList.value = getChordList()

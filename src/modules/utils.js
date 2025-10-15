@@ -24,6 +24,7 @@ export function injectGtag() {
     // 此區塊由 Google Analytics 生成
     window.dataLayer = window.dataLayer || []
     function gtag() {
+      // eslint-disable-next-line prefer-rest-params
       window.dataLayer.push(arguments)
     }
     gtag('js', new Date())
@@ -33,13 +34,12 @@ export function injectGtag() {
 
 /**
  * @typedef {object} Params
- * @prop {number} transpose
- * @prop {boolean} darkMode
- * @property
+ * @property {number} transpose 移調值（-11 ~ 11）
+ * @property {boolean} darkMode 是否啟用深色模式
  */
 /**
  * 從 URL 取得參數
- * @returns {Params}
+ * @returns {Params} 參數物件
  */
 export function getQueryParams() {
   const url = new URL(window.location.href)
@@ -86,6 +86,7 @@ export function archiveChordSheet() {
       body: JSON.stringify(formBody),
     })
       .then((response) => {
+        // eslint-disable-next-line no-console
         console.log('[91 Plus] 雲端樂譜備份成功：', response)
       })
       .catch((error) => {
@@ -108,9 +109,10 @@ export function initMutationObserver() {
     // 所以將 #tone_z 的子元素數量作為動態讀取是否完成的依據
     // 如果已全數完成，則觸發 body 上的 mutation.done 事件
     const isMutationDone = !!document.querySelector('#tone_z').childElementCount
-    if (!isMutationDone) { return }
-    $('body').trigger('mutation.done')
-    observer.disconnect()
+    if (isMutationDone) {
+      $('body').trigger('mutation.done')
+      observer.disconnect()
+    }
   }).observe(document.body, { childList: true, subtree: true })
 }
 
@@ -126,7 +128,9 @@ export function handleEvents() {
   $('html').on('keydown', (event) => {
     const excludedTags = ['input']
     const tagName = event.target.tagName.toLowerCase()
-    if (excludedTags.includes(tagName)) { return }
+    if (excludedTags.includes(tagName)) {
+      return
+    }
     StoreHandler.handleKeydown(event.key)
   })
 }
@@ -154,7 +158,7 @@ export function switchInstrument(instrument) {
 
 /**
  * 取得 91 譜的和弦圖相關資料
- * @returns {object}
+ * @returns {object} 和弦圖資料
  */
 export function getChordShapes() {
   const chordShapes = unsafeWindow.chord_shapes
@@ -163,7 +167,7 @@ export function getChordShapes() {
 
 /**
  * 取得當前譜面上所有用到的和弦名稱
- * @returns {string[]}
+ * @returns {string[]} 和弦名稱陣列
  */
 export function getChordList() {
   const chordList = []
@@ -176,7 +180,7 @@ export function getChordList() {
 /**
  * 將和弦名稱轉換為 `getChordShapes()` 的鍵值格式
  * @param {string} chordName
- * @returns {string}
+ * @returns {string} 轉換後的和弦名稱
  */
 export function convertChordName(chordName) {
   const root = chordName.match(/^[A-G]#?/)[0]

@@ -20,25 +20,29 @@ export default class ChordSheetElement {
     })
   }
 
-  /** @returns {ChordSheetElement} */
+  /** @returns {ChordSheetElement} 當前實例 */
   formatUnderlines() {
     const underlineEl = this.chordSheetElement.querySelectorAll('u')
     const doubleUnderlineEl = this.chordSheetElement.querySelectorAll('abbr')
-    underlineEl.forEach((el) => { el.innerText = `{_${el.innerText}_}` })
-    doubleUnderlineEl.forEach((el) => { el.innerText = `{=${el.innerText}=}` })
+    underlineEl.forEach((el) => {
+      el.textContent = `{_${el.textContent}_}`
+    })
+    doubleUnderlineEl.forEach((el) => {
+      el.textContent = `{=${el.textContent}=}`
+    })
     return this
   }
 
   /** @param {NodeList} nodeList */
   #unformat(nodeList) {
     nodeList.forEach((el) => {
-      el.innerHTML = el.innerText
+      el.innerHTML = el.textContent
         .replaceAll(/\{_|\{=|=\}|_\}/g, '')
         .replaceAll(/[a-z0-9#/]+/gi, /* html */`<span class="tf">$&</span>`)
     })
   }
 
-  /** @returns {ChordSheetElement} */
+  /** @returns {ChordSheetElement} 當前實例 */
   unformatUnderlines() {
     const underlineEl = this.chordSheetElement.querySelectorAll('u')
     const doubleUnderlineEl = this.chordSheetElement.querySelectorAll('abbr')

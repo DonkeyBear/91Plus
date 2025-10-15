@@ -3,7 +3,7 @@ import { GM_getValue, GM_setValue } from '$'
 export default class MonkeyStorage {
   /**
    * @param {string} key
-   * @returns {string | null}
+   * @returns {string | null} 儲存的值，若無則回傳 null
    */
   static getItem(key) {
     if (GM_getValue) {

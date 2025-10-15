@@ -28,7 +28,9 @@ export class StoreHandler {
 
     // 依照 URL 參數進行移調
     const params = getQueryParams()
-    if (params.transpose) { this.#store.transpose = params.transpose }
+    if (params.transpose) {
+      this.#store.transpose = params.transpose
+    }
   }
 
   start() {

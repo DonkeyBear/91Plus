@@ -14,7 +14,9 @@ const isChordExist = ref(true)
 onMounted(() => {
   const formattedChordKey = convertChordName(props.chord)
   const chordShape = chordShapes[formattedChordKey]
-  if (!chordShape) { return isChordExist.value = false }
+  if (!chordShape) {
+    return isChordExist.value = false
+  }
 
   const chordObject = {
     ...chordShape,
@@ -29,7 +31,9 @@ onMounted(() => {
     }),
     chord: chordShape.chord.map(([stringNum, fretNum]) => {
       const raw = [stringNum, fretNum]
-      if (isNaN(+fretNum)) { return raw }
+      if (Number.isNaN(+fretNum)) {
+        return raw
+      }
       let newFretNum = fretNum
       newFretNum += chordShape.position || 0
       newFretNum -= chordShape.position_text || 0

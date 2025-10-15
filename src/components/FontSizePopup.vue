@@ -5,7 +5,7 @@ import AdjustWidget from './AdjustWidget.vue'
 
 const store = useStore()
 
-const getFontSize = computed(() => { return store.originalFontSize + store.fontSizeDelta })
+const getFontSize = computed(() => store.originalFontSize + store.fontSizeDelta)
 </script>
 
 <template>

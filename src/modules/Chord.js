@@ -10,7 +10,7 @@ export default class Chord {
 
   /**
    * @param {number} delta
-   * @returns {Chord}
+   * @returns {Chord} 當前實例
    */
   transpose(delta) {
     this.chordString = this.chordString.replaceAll(/[A-G][#b]?/g, (note) => {
@@ -24,7 +24,7 @@ export default class Chord {
     return this
   }
 
-  /** @returns {Chord} */
+  /** @returns {Chord} 當前實例 */
   switchModifier() {
     this.chordString = this.chordString.replaceAll(/[A-G][#b]/g, (note) => {
       const scale = note.includes('#') ? Chord.sharps : Chord.flats
@@ -35,7 +35,7 @@ export default class Chord {
     return this
   }
 
-  /** @returns {Chord} */
+  /** @returns {Chord} 當前實例 */
   useSharpModifier() {
     this.chordString = this.chordString.replaceAll(/[A-G]b/g, (note) => {
       const noteIndex = Chord.flats.indexOf(note)
@@ -44,7 +44,7 @@ export default class Chord {
     return this
   }
 
-  /** @returns {Chord} */
+  /** @returns {Chord} 當前實例 */
   useFlatModifier() {
     this.chordString = this.chordString.replaceAll(/[A-G]#/g, (note) => {
       const noteIndex = Chord.sharps.indexOf(note)
@@ -53,12 +53,12 @@ export default class Chord {
     return this
   }
 
-  /** @returns {string} */
+  /** @returns {string} 和弦字串 */
   toString() {
     return this.chordString
   }
 
-  /** @returns {string} */
+  /** @returns {string} 將升降號改為上下標的和弦字串 */
   toFormattedString() {
     return this.chordString.replaceAll(/[#b]/g, /* html */`<sup>$&</sup>`)
   }

@@ -47,9 +47,11 @@ export const useStore = defineStore('store', {
     serialize: stringify,
     paths: ['isDarkMode', 'agreeToArchiveSheet'],
     beforeRestore() {
+      // eslint-disable-next-line no-console
       console.log('[91 Plus] 讀取偏好設置中')
     },
     afterRestore() {
+      // eslint-disable-next-line no-console
       console.log('[91 Plus] 偏好設置讀取完畢')
     },
     debug: true,
