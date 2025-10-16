@@ -1,4 +1,6 @@
 import { useStore } from '../store'
+import Logger from './Logger'
+import MonkeyStorage from './MonkeyStorage'
 import { StoreHandler } from './StoreHandler'
 import {
   archiveChordSheet,
@@ -11,6 +13,7 @@ import {
 } from './utils'
 
 export default function init() {
+  Logger.log(MonkeyStorage.getStorageType())
   redirect()
   injectGtag()
   initMutationObserver()
