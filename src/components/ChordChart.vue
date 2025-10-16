@@ -1,13 +1,13 @@
 <script setup>
 import { ChordBox } from 'vexchords'
-import { nextTick, onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
 import { convertChordName, getChordShapes } from '../modules/utils'
 
 const props = defineProps({
   chord: String,
 })
 
-const chordRef = ref(undefined)
+const chordRef = useTemplateRef('chord')
 const chordShapes = getChordShapes()
 const isChordExist = ref(true)
 
@@ -63,7 +63,7 @@ onMounted(() => {
     <div class="chord-name">
       {{ props.chord }}
     </div>
-    <div ref="chordRef" class="chord-chart" :chord-name="props.chord" />
+    <div ref="chord" class="chord-chart" :chord-name="props.chord" />
   </div>
 </template>
 
