@@ -1,5 +1,4 @@
 import { unsafeWindow } from '$'
-import uaParserJs from 'ua-parser-js'
 import ChordSheetDocument from './ChordSheetDocument'
 import ChordSheetElement from './ChordSheetElement'
 import { StoreHandler } from './StoreHandler'
@@ -188,9 +187,3 @@ export function convertChordName(chordName) {
   const rest = chordName.replace(/^[A-G]#?/, '')
   return `${rest} ${root}`
 }
-
-/** 分析過後的 User Agent */
-export const userAgent = (() => {
-  const UAParser = uaParserJs?.UAParser || window.UAParser
-  return UAParser(navigator.userAgent)
-})()
