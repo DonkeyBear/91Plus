@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import { parse, stringify } from 'zipson'
 import Chord from './modules/Chord'
-import Logger from './modules/Logger'
 import MonkeyStorage from './modules/MonkeyStorage'
 
 export const useStore = defineStore('store', {
@@ -18,7 +17,6 @@ export const useStore = defineStore('store', {
         font: false,
         settings: false,
         menu: false,
-        debug: false,
         // 選單內功能
         hotkey: false,
       },
@@ -27,11 +25,6 @@ export const useStore = defineStore('store', {
       // ####################
       agreeToArchiveSheet: true,
       isDevMode: false,
-      // ####################
-      // 日誌相關狀態
-      // ####################
-      logs: [],
-      maxLogs: 100,
       // ####################
       // 譜面相關狀態
       // ####################
@@ -55,10 +48,12 @@ export const useStore = defineStore('store', {
     serialize: stringify,
     pick: ['isDarkMode', 'agreeToArchiveSheet', 'isDevMode'],
     beforeRestore() {
-      Logger.log('讀取偏好設置中')
+      // eslint-disable-next-line no-console
+      console.log('[91Plus] 讀取偏好設置中')
     },
     afterRestore() {
-      Logger.log('偏好設置讀取完畢')
+      // eslint-disable-next-line no-console
+      console.log('[91Plus] 偏好設置讀取完畢')
     },
     debug: true,
   },
@@ -105,25 +100,6 @@ export const useStore = defineStore('store', {
         newTranspose = -this.originalCapo
       }
       this.transpose = newTranspose
-    },
-    addLog(level, ...args) {
-      const timestamp = new Date().toLocaleString()
-      const message = args.join(' ')
-      const logEntry = {
-        timestamp,
-        level,
-        message,
-      }
-
-      this.logs.push(logEntry)
-
-      // 限制日誌數量，避免記憶體溢出
-      if (this.logs.length > this.maxLogs) {
-        this.logs.shift()
-      }
-    },
-    clearLogs() {
-      this.logs = []
     },
   },
 })

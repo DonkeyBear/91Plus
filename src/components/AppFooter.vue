@@ -1,7 +1,6 @@
 <script setup>
 import { useStore } from '../store'
 import ChordPopup from './ChordPopup.vue'
-import DebugPopup from './DebugPopup.vue'
 import FontSizePopup from './FontSizePopup.vue'
 import HotkeyPopup from './HotkeyPopup.vue'
 import MenuPopup from './MenuPopup.vue'
@@ -53,20 +52,12 @@ const store = useStore()
           :active="store.isPopupShow.menu"
           @click="store.togglePopup('menu')"
         />
-        <ToolbarIcon
-          v-show="store.isDevMode"
-          icon="bug-fill"
-          text="除錯"
-          :active="store.isPopupShow.debug"
-          @click="store.togglePopup('debug')"
-        />
         <!-- Popups -->
         <SheetPopup />
         <ChordPopup />
         <FontSizePopup />
         <SettingsPopup />
         <MenuPopup />
-        <DebugPopup />
         <HotkeyPopup />
       </div>
     </div>

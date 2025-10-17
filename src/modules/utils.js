@@ -2,7 +2,6 @@ import { unsafeWindow } from '$'
 import { UAParser } from 'ua-parser-js'
 import ChordSheetDocument from './ChordSheetDocument'
 import ChordSheetElement from './ChordSheetElement'
-import Logger from './Logger'
 import { StoreHandler } from './StoreHandler'
 
 /** 若樂譜頁面為電腦版，跳轉至行動版 */
@@ -87,14 +86,15 @@ export function archiveChordSheet() {
       body: JSON.stringify(formBody),
     })
       .then((response) => {
-        Logger.log('[91 Plus] 雲端樂譜備份成功：', response)
+        // eslint-disable-next-line no-console
+        console.log('[91 Plus] 雲端樂譜備份成功：', response)
       })
       .catch((error) => {
-        Logger.error('[91 Plus] 雲端樂譜備份失敗：', error)
+        console.error('[91 Plus] 雲端樂譜備份失敗：', error)
       })
   }
   catch {
-    Logger.warn('[91 Plus] 樂譜解析失敗，無法備份')
+    console.warn('[91 Plus] 樂譜解析失敗，無法備份')
     fetch(
       `https://91-plus-plus-api.fly.dev/report?id=${chordSheetDocument.getId()}`,
     )
