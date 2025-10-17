@@ -161,7 +161,8 @@ export function switchInstrument(instrument) {
  * @returns {object} 和弦圖資料
  */
 export function getChordShapes() {
-  const chordShapes = unsafeWindow.chord_shapes
+  const thisWindow = unsafeWindow ?? window
+  const chordShapes = thisWindow?.chord_shapes ?? {}
   return chordShapes
 }
 
