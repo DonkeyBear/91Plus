@@ -23,7 +23,7 @@ const hotkeyList = props.hotkey.split(' ')
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 .hotkey-item {
   display: flex;

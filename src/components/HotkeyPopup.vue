@@ -1,7 +1,7 @@
 <script setup>
-import hotkeyData from '../assets/hotkeys.json'
-import { useStore } from '../store'
-import HotkeyItem from './HotkeyItem.vue'
+import hotkeyData from '@/assets/hotkeys.json'
+import HotkeyItem from '@/components/common/HotkeyItem.vue'
+import { useStore } from '@/store'
 
 const store = useStore()
 </script>
@@ -32,7 +32,7 @@ const store = useStore()
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 @include transition-slide-and-fade;
 

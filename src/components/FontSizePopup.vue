@@ -1,7 +1,7 @@
 <script setup>
 import { computed } from 'vue'
-import { useStore } from '../store'
-import AdjustWidget from './AdjustWidget.vue'
+import AdjustWidget from '@/components/common/AdjustWidget.vue'
+import { useStore } from '@/store'
 
 const store = useStore()
 
@@ -27,7 +27,7 @@ const getFontSize = computed(() => store.originalFontSize + store.fontSizeDelta)
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 @include transition-slide-and-fade;
 

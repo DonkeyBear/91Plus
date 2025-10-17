@@ -2,8 +2,8 @@
 import { unsafeWindow } from '$'
 import { useScriptTag, watchImmediate } from '@vueuse/core'
 import { useTemplateRef } from 'vue'
-import MonkeyStorage from '../modules/MonkeyStorage'
-import { useStore } from '../store'
+import MonkeyStorage from '@/modules/MonkeyStorage'
+import { useStore } from '@/store'
 
 const store = useStore()
 

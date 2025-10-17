@@ -1,8 +1,8 @@
 <script setup>
 import html2canvas from 'html2canvas'
-import ChordSheetDocument from '../modules/ChordSheetDocument'
-import { useStore } from '../store'
-import MenuButton from './MenuButton.vue'
+import MenuButton from '@/components/common/MenuButton.vue'
+import ChordSheetDocument from '@/modules/ChordSheetDocument'
+import { useStore } from '@/store'
 
 const store = useStore()
 
@@ -44,7 +44,7 @@ function goToGithubPage() {
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 @include transition-slide-and-fade;
 

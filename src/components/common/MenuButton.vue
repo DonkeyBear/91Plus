@@ -1,5 +1,5 @@
 <script setup>
-import ToolbarIcon from './ToolbarIcon.vue'
+import ToolbarIcon from '@/components/common/ToolbarIcon.vue'
 
 const props = defineProps({
   icon: String,

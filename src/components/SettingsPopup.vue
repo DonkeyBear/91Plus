@@ -1,5 +1,5 @@
 <script setup>
-import { useStore } from '../store'
+import { useStore } from '@/store'
 
 const store = useStore()
 </script>
@@ -26,7 +26,7 @@ const store = useStore()
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 @include transition-slide-and-fade;
 

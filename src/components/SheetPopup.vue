@@ -1,7 +1,7 @@
 <script setup>
-import { switchInstrument } from '../modules/utils'
-import { useStore } from '../store'
-import AdjustWidget from './AdjustWidget.vue'
+import AdjustWidget from '@/components/common/AdjustWidget.vue'
+import { switchInstrument } from '@/modules/utils'
+import { useStore } from '@/store'
 
 const store = useStore()
 </script>
@@ -42,7 +42,7 @@ const store = useStore()
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 @include transition-slide-and-fade;
 

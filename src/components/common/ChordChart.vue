@@ -1,7 +1,7 @@
 <script setup>
 import { ChordBox } from 'vexchords'
 import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
-import { convertChordName, getChordShapes } from '../modules/utils'
+import { convertChordName, getChordShapes } from '@/modules/utils'
 
 const props = defineProps({
   chord: String,

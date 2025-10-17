@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import ToolbarIcon from './ToolbarIcon.vue'
+import ToolbarIcon from '@/components/common/ToolbarIcon.vue'
 
 const props = defineProps({
   active: Boolean,
@@ -48,7 +48,7 @@ function backToPreviousPage() {
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 @include transition-slide(up);
 

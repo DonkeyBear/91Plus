@@ -11,8 +11,8 @@ const props = defineProps({
 </template>
 
 <style scoped lang="scss">
-@import '../styles/variables.scss';
-@import '../styles/mixins.scss';
+@import '@/styles/variables.scss';
+@import '@/styles/mixins.scss';
 
 .fade-enter-active,
 .fade-leave-active {

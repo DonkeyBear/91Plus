@@ -1,16 +1,11 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { getChordList, userAgent } from '../modules/utils'
-import { useStore } from '../store'
-import BootstrapIcon from './BootstrapIcon.vue'
-import ChordChart from './ChordChart.vue'
+import BootstrapIcon from '@/components/common/BootstrapIcon.vue'
+import ChordChart from '@/components/common/ChordChart.vue'
+import { getChordList } from '@/modules/utils'
+import { useStore } from '@/store'
 
 const store = useStore()
-
-const canShowChord = ref(true)
-if (userAgent.browser.name === 'Mobile Safari') {
-  canShowChord.value = false
-}
 
 const bannerText = ref('')
 const bannerTextList = [
@@ -20,13 +15,8 @@ const bannerTextList = [
 
 const randomIndex = ref(0)
 function refreshBanner() {
-  if (!canShowChord.value) {
-    bannerText.value = '很抱歉，由於技術問題，你所使用的瀏覽器目前尚無法繪製出和弦圖，開發者正在試著修正這個問題，敬請期待更新。'
-  }
-  else {
-    randomIndex.value = Math.floor(Math.random() * bannerTextList.length)
-    bannerText.value = bannerTextList[randomIndex.value]
-  }
+  randomIndex.value = Math.floor(Math.random() * bannerTextList.length)
+  bannerText.value = bannerTextList[randomIndex.value]
 }
 
 // 在開啟這個 Popup 的時候才繪製和弦

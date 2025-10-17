@@ -1,5 +1,5 @@
 <script setup>
-import BootstrapIcon from './BootstrapIcon.vue'
+import BootstrapIcon from '@/components/common/BootstrapIcon.vue'
 
 const props = defineProps({
   icon: {
@@ -41,7 +41,7 @@ const props = defineProps({
 </template>
 
 <style scoped lang="scss">
-@import '../styles/variables.scss';
+@import '@/styles/variables.scss';
 
 .toolbar-icon {
   cursor: pointer;

@@ -1,12 +1,12 @@
 <script setup>
-import { useStore } from '../store'
-import ChordPopup from './ChordPopup.vue'
-import FontSizePopup from './FontSizePopup.vue'
-import HotkeyPopup from './HotkeyPopup.vue'
-import MenuPopup from './MenuPopup.vue'
-import SettingsPopup from './SettingsPopup.vue'
-import SheetPopup from './SheetPopup.vue'
-import ToolbarIcon from './ToolbarIcon.vue'
+import ChordPopup from '@/components/ChordPopup.vue'
+import ToolbarIcon from '@/components/common/ToolbarIcon.vue'
+import FontSizePopup from '@/components/FontSizePopup.vue'
+import HotkeyPopup from '@/components/HotkeyPopup.vue'
+import MenuPopup from '@/components/MenuPopup.vue'
+import SettingsPopup from '@/components/SettingsPopup.vue'
+import SheetPopup from '@/components/SheetPopup.vue'
+import { useStore } from '@/store'
 
 const props = defineProps({
   active: Boolean,
@@ -65,7 +65,7 @@ const store = useStore()
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
+@import '@/styles/mixins.scss';
 
 @include transition-slide(down);
 
