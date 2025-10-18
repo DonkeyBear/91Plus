@@ -1,4 +1,5 @@
 <script setup>
+import CheckBox from '@/components/common/CheckBox.vue'
 import { useStore } from '@/store'
 
 const store = useStore()
@@ -10,15 +11,15 @@ const store = useStore()
       <div class="settings-popup-container">
         <label class="setting-item">
           <span>深色模式</span>
-          <input v-model="store.isDarkMode" type="checkbox">
+          <CheckBox v-model="store.isDarkMode" />
         </label>
         <label class="setting-item">
           <span>協助測試雲端備份樂譜功能</span>
-          <input v-model="store.agreeToArchiveSheet" type="checkbox">
+          <CheckBox v-model="store.agreeToArchiveSheet" />
         </label>
         <label class="setting-item">
           <span>開發者模式</span>
-          <input v-model="store.isDevMode" type="checkbox">
+          <CheckBox v-model="store.isDevMode" />
         </label>
       </div>
     </div>
@@ -43,6 +44,7 @@ const store = useStore()
     justify-content: space-between;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
+    color: rgba($color: black, $alpha: 0.8);
     cursor: pointer;
 
     &:hover {

@@ -32,6 +32,7 @@ const props = defineProps({
   color: v-bind(color);
   font-size: v-bind(size);
   -webkit-text-stroke: v-bind(stroke) v-bind(color);
+  line-height: 0;
 
   &::before {
     transition: text-shadow 0.2s;
