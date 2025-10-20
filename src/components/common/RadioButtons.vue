@@ -1,59 +1,106 @@
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
   options: {
     type: Array,
     required: true,
+    validator: (options) => {
+      return options.every(opt =>
+        Object.prototype.hasOwnProperty.call(opt, 'value')
+        && Object.prototype.hasOwnProperty.call(opt, 'label'),
+      )
+    },
   },
 })
 const modelValue = defineModel()
+
+const activatedIndex = computed(() => {
+  return props.options.findIndex(option => option.value === modelValue.value)
+})
 </script>
 
 <template>
   <div class="radio-buttons-container">
-    <button
-      v-for="option in props.options"
-      :key="JSON.stringify(option)"
+    <div
+      v-for="(option, index) of props.options"
+      :key="`${option.label}_${option.value}`"
+      class="radio-button"
       :class="{ active: modelValue === option.value }"
-      @click="modelValue = option.value"
     >
-      {{ option.label }}
-    </button>
+      <button @click="modelValue = option.value">
+        {{ option.label }}
+      </button>
+      <div
+        v-if="index < props.options.length - 1"
+        class="vertical-rule"
+        :class="{ active: index === activatedIndex || index === activatedIndex - 1 }"
+      />
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .radio-buttons-container {
-  display: flex;
+  display: inline-flex;
 
-  button {
-    font-size: 0.75em;
-    padding: 0.1em 0.4em;
-    border: 1px solid darkgray;
-    color: rgba($color: black, $alpha: 0.75);
-    background: none;
-    cursor: pointer;
+  .radio-button {
+    $border-radius: 0.5em;
+    $border-color: darkgray;
+    $border-color-active: color-mix(in srgb, dodgerblue 80%, black);
+
+    display: flex;
+
+    button {
+      font-size: 0.75em;
+      padding: 0.1em 0.5em;
+      border: 1px solid $border-color;
+      color: rgba($color: black, $alpha: 0.75);
+      background: none;
+      cursor: pointer;
+      transition: all linear 0.1s;
+
+      &:hover {
+        background: rgba($color: black, $alpha: 0.05);
+      }
+    }
 
     &.active {
-      background: dodgerblue !important;
-      color: white;
+      button {
+        background: dodgerblue !important;
+        border-color: $border-color-active;
+        color: white;
+      }
     }
-
-    &:hover {
-      background: rgba($color: black, $alpha: 0.05);
-    }
-
-    $border-radius: 0.25em;
 
     &:first-child {
-      border-radius: $border-radius 0 0 $border-radius;
+      button {
+        border-radius: $border-radius 0 0 $border-radius;
+        border-right: none;
+      }
     }
 
     &:last-child {
-      border-radius: 0 $border-radius $border-radius 0;
+      button {
+        border-radius: 0 $border-radius $border-radius 0;
+        border-left: none;
+      }
     }
 
-    &:not(:last-child) {
-      border-right: none;
+    &:not(:first-child):not(:last-child) {
+      button {
+        border-right: none;
+        border-left: none;
+      }
+    }
+
+    .vertical-rule {
+      width: 1px;
+      background: $border-color;
+
+      &.active {
+        background: $border-color-active;
+      }
     }
   }
 }
