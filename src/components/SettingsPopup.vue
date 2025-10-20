@@ -1,5 +1,6 @@
 <script setup>
-import CheckBox from '@/components/common/CheckBox.vue'
+import RadioButtons from '@/components/common/RadioButtons.vue'
+import ToggleSwitch from '@/components/common/ToggleSwitch.vue'
 import { useStore } from '@/store'
 
 const store = useStore()
@@ -11,15 +12,15 @@ const store = useStore()
       <div class="settings-popup-container">
         <label class="setting-item">
           <span>深色模式</span>
-          <CheckBox v-model="store.isDarkMode" />
+          <ToggleSwitch v-model="store.isDarkMode" />
         </label>
         <label class="setting-item">
           <span>協助測試雲端備份樂譜功能</span>
-          <CheckBox v-model="store.agreeToArchiveSheet" />
+          <ToggleSwitch v-model="store.agreeToArchiveSheet" />
         </label>
         <label class="setting-item">
           <span>開發者模式</span>
-          <CheckBox v-model="store.isDevMode" />
+          <ToggleSwitch v-model="store.isDevMode" />
         </label>
       </div>
     </div>
