@@ -1,7 +1,6 @@
 import { unsafeWindow } from '$'
 import ChordSheetDocument from './ChordSheetDocument'
 import ChordSheetElement from './ChordSheetElement'
-import { StoreHandler } from './StoreHandler'
 
 /** 若樂譜頁面為電腦版，跳轉至行動版 */
 export function redirect() {
@@ -121,17 +120,6 @@ export function initMutationObserver() {
  */
 export function onDomReady(callback) {
   $('body').on('mutation.done', callback)
-}
-
-export function handleEvents() {
-  $('html').on('keydown', (event) => {
-    const excludedTags = ['input']
-    const tagName = event.target.tagName.toLowerCase()
-    if (excludedTags.includes(tagName)) {
-      return
-    }
-    StoreHandler.handleKeydown(event.key)
-  })
 }
 
 /**

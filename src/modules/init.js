@@ -3,7 +3,6 @@ import { StoreHandler } from './StoreHandler'
 import {
   archiveChordSheet,
   changeTitle,
-  handleEvents,
   initMutationObserver,
   injectGtag,
   onDomReady,
@@ -14,8 +13,8 @@ export default function init() {
   redirect()
   injectGtag()
   initMutationObserver()
-  handleEvents()
   const storeHandler = new StoreHandler().start()
+  storeHandler.initKeyBindings()
 
   // 頁面動態讀取完成時觸發
   onDomReady(() => {

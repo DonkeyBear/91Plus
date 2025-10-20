@@ -1,3 +1,4 @@
+import { onKeyStroke, useActiveElement } from '@vueuse/core'
 import { watch } from 'vue'
 import { useStore } from '../store'
 import ChordSheetElement from './ChordSheetElement'
@@ -59,53 +60,56 @@ export class StoreHandler {
     })
   }
 
-  static handleKeydown(key) {
-    const store = useStore()
+  initKeyBindings() {
+    const activeElement = useActiveElement()
 
-    switch (key) {
-      case ' ': {
-        store.toggleToolbars()
-        break
-      }
-      case '/': {
-        if (!store.isToolbarsShow) {
-          store.toggleToolbars()
-          store.closePopups()
+    function isInputFocused() {
+      return activeElement.value?.tagName === 'INPUT' || activeElement.value?.tagName === 'TEXTAREA'
+    }
+
+    /**
+     * @param {Function} func
+     * @returns {Function} 只在輸入框未被聚焦時才執行的函式
+     */
+    function whenInputNotFocused(func) {
+      return () => {
+        if (!isInputFocused()) {
+          func()
         }
-        setTimeout(() => {
-          $('#plus91-header input').get(0).focus()
-        }, 0)
-        break
-      }
-      case 'Escape': {
-        if (store.isToolbarsShow) {
-          store.toggleToolbars()
-        }
-        break
-      }
-      default: {
-        break
       }
     }
 
-    if (store.isPopupShow.sheet) {
-      switch (key) {
-        case 'ArrowLeft': {
-          store.plusTranspose(-1)
-          break
-        }
-        case 'ArrowRight': {
-          store.plusTranspose(1)
-          break
-        }
-        case 'ArrowDown': {
-          store.transpose = 0
-          break
-        }
-        default: {
-          break
-        }
+    onKeyStroke(' ', whenInputNotFocused(() => {
+      this.#store.toggleToolbars()
+    }))
+    onKeyStroke('/', whenInputNotFocused(() => {
+      if (!this.#store.isToolbarsShow) {
+        this.#store.toggleToolbars()
+        this.#store.closePopups()
       }
-    }
+      setTimeout(() => {
+        $('#plus91-header input')?.get(0)?.focus()
+      })
+    }))
+    onKeyStroke('Escape', whenInputNotFocused(() => {
+      if (this.#store.isToolbarsShow) {
+        this.#store.toggleToolbars()
+      }
+    }))
+    onKeyStroke('ArrowLeft', whenInputNotFocused(() => {
+      if (this.#store.isPopupShow.sheet) {
+        this.#store.plusTranspose(-1)
+      }
+    }))
+    onKeyStroke('ArrowRight', whenInputNotFocused(() => {
+      if (this.#store.isPopupShow.sheet) {
+        this.#store.plusTranspose(1)
+      }
+    }))
+    onKeyStroke('ArrowDown', whenInputNotFocused(() => {
+      if (this.#store.isPopupShow.sheet) {
+        this.#store.transpose = 0
+      }
+    }))
   }
 }
