@@ -13,7 +13,8 @@ export class StoreHandler {
     this.#store = useStore()
   }
 
-  initState() {
+  /** 從 DOM 取得 Store 所需的初始化狀態 */
+  initStateFromDom() {
     // 儲存初始 Capo 和調號
     const capoSelected = $('.capo .select').eq(0).text().trim()
     const originalCapo = +capoSelected.split(/\s*\/\s*/)[0] // CAPO
@@ -34,25 +35,21 @@ export class StoreHandler {
     }
   }
 
-  start() {
+  /** 初始化監聽器 */
+  initWatchers() {
     this.#watchTranspose()
     this.#watchFontSize()
-    return this
   }
 
   /** 當 `#store.transpose` 變動時，將譜面上的和弦進行移調 */
   #watchTranspose() {
-    watch(() => {
-      return this.#store.transpose
-    }, (newValue, oldValue) => {
+    watch(() => this.#store.transpose, (newValue, oldValue) => {
       ChordSheetElement.transposeSheet((newValue - oldValue) % 12)
     })
   }
 
   #watchFontSize() {
-    watch(() => {
-      return this.#store.fontSizeDelta
-    }, (newValue) => {
+    watch(() => this.#store.fontSizeDelta, (newValue) => {
       const oFontSize = this.#store.originalFontSize
       const oLineHeight = this.#store.originalLineHeight
       $('#tone_z').css('font-size', `${oFontSize + newValue}px`)
