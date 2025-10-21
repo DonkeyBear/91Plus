@@ -3,21 +3,19 @@ import { StoreHandler } from './StoreHandler'
 import {
   archiveChordSheet,
   changeTitle,
-  initMutationObserver,
   injectGtag,
-  onDomReady,
+  onSheetDomReady,
   redirect,
 } from './utils'
 
 export default function init() {
   redirect()
   injectGtag()
-  initMutationObserver()
   const storeHandler = new StoreHandler().start()
   storeHandler.initKeyBindings()
 
   // 頁面動態讀取完成時觸發
-  onDomReady(() => {
+  onSheetDomReady(() => {
     changeTitle()
     storeHandler.initState()
     const store = useStore()

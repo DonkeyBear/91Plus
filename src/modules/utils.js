@@ -99,27 +99,22 @@ export function archiveChordSheet() {
   }
 }
 
-/** 初始化 MutationObserver */
-export function initMutationObserver() {
-  return new MutationObserver((records, observer) => {
+/**
+ * 監聽樂譜內容的 DOM 變化，當動態讀取完成時觸發 Callback
+ * @param {Function} callback
+ * @returns {MutationObserver} 監聽器實例
+ */
+export function onSheetDomReady(callback) {
+  return new MutationObserver((_records, observer) => {
     // 經過檢查，91 譜的動態讀取都會在一次 Mutation 裡完成
     // #tone_z 在動態讀取前就已經存在於 DOM 結構，並且不包含任何子元素
     // 所以將 #tone_z 的子元素數量作為動態讀取是否完成的依據
-    // 如果已全數完成，則觸發 body 上的 mutation.done 事件
     const isMutationDone = !!document.querySelector('#tone_z').childElementCount
     if (isMutationDone) {
-      $('body').trigger('mutation.done')
       observer.disconnect()
+      callback()
     }
   }).observe(document.body, { childList: true, subtree: true })
-}
-
-/**
- * 當動態讀取完畢時執行 Callback
- * @param {Function} callback
- */
-export function onDomReady(callback) {
-  $('body').on('mutation.done', callback)
 }
 
 /**
