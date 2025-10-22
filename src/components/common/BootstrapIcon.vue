@@ -39,7 +39,7 @@ const props = defineProps({
   }
 
   &[active='true']::before {
-    text-shadow: 0 0 0.5rem rgb(75, 156, 169);
+    text-shadow: 0 0 0.5rem color-mix(in srgb, var(--theme-color) 50%, white);
   }
 }
 </style>

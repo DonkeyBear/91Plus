@@ -82,6 +82,6 @@ const store = useStore()
   }
 
   padding-bottom: 0.75rem;
-  border-top: 1px solid $toolbar-border-color;
+  border-top: 1px solid var(--toolbar-border-color);
 }
 </style>

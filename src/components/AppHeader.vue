@@ -64,7 +64,7 @@ function backToPreviousPage() {
     border-radius: 0 0 1rem 1rem;
   }
 
-  border-bottom: 1px solid $toolbar-border-color;
+  border-bottom: 1px solid var(--toolbar-border-color);
 
   input {
     flex-grow: 1;

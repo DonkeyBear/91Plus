@@ -1,6 +1,9 @@
 $bg-color: #fafafa;
-$toolbar-bg-color: rgba(75, 156, 169, 0.65);
-$toolbar-border-color: rgb(90, 140, 160);
+html {
+  --theme-color: rgb(75, 150, 169);
+  --toolbar-bg-color: color-mix(in srgb, var(--theme-color) 65%, transparent);
+  --toolbar-border-color: color-mix(in srgb, var(--theme-color) 50%, rgba(255, 255, 255, 0.1));
+}
 
 // z-index
 $z-dark-mode-overlay: 800;

@@ -53,7 +53,7 @@ const props = defineProps({
 }
 
 .toolbar-icon-text {
-  color: color-mix(in srgb, v-bind(color) 70%, $toolbar-bg-color);
+  color: color-mix(in srgb, v-bind(color) 70%, var(--toolbar-bg-color));
   font-size: 0.5rem;
   $spacing: 0.15rem;
   letter-spacing: $spacing;

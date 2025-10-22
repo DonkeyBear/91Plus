@@ -62,8 +62,8 @@ watch(store.isPopupShow, () => {
   .banner {
     display: flex;
     align-items: center;
-    background: rgba($toolbar-bg-color, 0.25);
-    color: color-mix(in srgb, $toolbar-bg-color 50%, black 50%);
+    background: color-mix(in srgb, var(--toolbar-bg-color) 25%, transparent);
+    color: color-mix(in srgb, var(--toolbar-bg-color) 50%, black);
     border-radius: 0.5rem;
     padding: 0.5rem 0.75rem;
     margin-bottom: 0.25rem;

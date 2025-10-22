@@ -12,7 +12,7 @@
 
 @mixin toolbar-container {
   width: min(100vw, 768px);
-  background: $toolbar-bg-color;
+  background: var(--toolbar-bg-color);
   backdrop-filter: blur(3px);
   padding: 0.25rem 0.75rem;
   display: flex;
