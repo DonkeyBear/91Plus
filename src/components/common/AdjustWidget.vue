@@ -76,6 +76,10 @@ const props = defineProps({
       background: rgba($color: black, $alpha: 0.025);
     }
 
+    &:not(:disabled) {
+      cursor: pointer;
+    }
+
     &:disabled {
       opacity: 0.25;
     }
