@@ -9,12 +9,17 @@ const store = useStore()
 
 const BUTTON_COLOR = '#555'
 
-function captureAsImage() {
+async function captureAsImage() {
   const content = document.querySelector('section.content')
-  html2canvas(content).then((canvas) => {
-    const newWindow = window.open()
-    newWindow.document.write(`<img src="${canvas.toDataURL()}" />`)
+  const canvas = await html2canvas(content)
+  const blob = await new Promise((resolve) => {
+    canvas.toBlob(resolve, 'image/png')
   })
+
+  const url = URL.createObjectURL(blob)
+  window.open(url, '_blank')
+
+  setTimeout(() => URL.revokeObjectURL(url), 10000)
 }
 
 function searchOnYoutube() {
