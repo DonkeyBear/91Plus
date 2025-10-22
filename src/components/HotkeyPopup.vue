@@ -1,44 +1,37 @@
 <script setup>
 import hotkeyData from '@/assets/hotkeys.json'
 import HotkeyItem from '@/components/common/HotkeyItem.vue'
+import PopupBase from '@/components/common/PopupBase.vue'
 import { useStore } from '@/store'
 
 const store = useStore()
 </script>
 
 <template>
-  <Transition name="slide-and-fade">
-    <div v-show="store.isPopupShow.hotkey" id="plus91-hotkey-popup">
-      <div class="hotkey-popup-container">
-        <section class="left-part">
-          <HotkeyItem
-            v-for="(item, index) of hotkeyData.hotkeysLeft"
-            :key="`${item.hotkey}_${item.desc}_${index}`"
-            :hotkey="item.hotkey"
-            :desc="item.desc"
-          />
-        </section>
-        <section class="right-part">
-          <HotkeyItem
-            v-for="(item, index) of hotkeyData.hotkeysRight"
-            :key="`${item.hotkey}_${item.desc}_${index}`"
-            :hotkey="item.hotkey"
-            :desc="item.desc"
-          />
-        </section>
-      </div>
+  <PopupBase id="plus91-hotkey-popup" v-model="store.isPopupShow.hotkey">
+    <div class="hotkey-popup-container">
+      <section class="left-part">
+        <HotkeyItem
+          v-for="(item, index) of hotkeyData.hotkeysLeft"
+          :key="`${item.hotkey}_${item.desc}_${index}`"
+          :hotkey="item.hotkey"
+          :desc="item.desc"
+        />
+      </section>
+      <section class="right-part">
+        <HotkeyItem
+          v-for="(item, index) of hotkeyData.hotkeysRight"
+          :key="`${item.hotkey}_${item.desc}_${index}`"
+          :hotkey="item.hotkey"
+          :desc="item.desc"
+        />
+      </section>
     </div>
-  </Transition>
+  </PopupBase>
 </template>
 
 <style scoped lang="scss">
-@import '@/styles/mixins.scss';
-
-@include transition-slide-and-fade;
-
 #plus91-hotkey-popup {
-  @include popup;
-
   .hotkey-popup-container {
     display: flex;
     color: #444;

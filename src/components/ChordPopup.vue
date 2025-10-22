@@ -2,6 +2,7 @@
 import { ref, watch } from 'vue'
 import BootstrapIcon from '@/components/common/BootstrapIcon.vue'
 import ChordChart from '@/components/common/ChordChart.vue'
+import PopupBase from '@/components/common/PopupBase.vue'
 import { getChordList } from '@/modules/utils'
 import { useStore } from '@/store'
 
@@ -32,33 +33,25 @@ watch(store.isPopupShow, () => {
 </script>
 
 <template>
-  <Transition name="slide-and-fade">
-    <div v-show="store.isPopupShow.chord" id="plus91-chord-popup" :class="{ 'banner-only': !chordList.length }">
-      <div class="banner">
-        <BootstrapIcon icon="info-circle-fill" color="inherit" size="inherit" />
-        <section>{{ bannerText }}</section>
-      </div>
-      <div class="chord-popup-container">
-        <template v-for="chord of chordList" :key="`${chord}_${new Date().getTime()}`">
-          <ChordChart :chord="chord" />
-        </template>
-      </div>
+  <PopupBase
+    id="plus91-chord-popup"
+    v-model="store.isPopupShow.chord"
+    :class="{ 'banner-only': !chordList.length }"
+  >
+    <div class="banner">
+      <BootstrapIcon icon="info-circle-fill" color="inherit" size="inherit" />
+      <section>{{ bannerText }}</section>
     </div>
-  </Transition>
+    <div class="chord-popup-container">
+      <template v-for="chord of chordList" :key="chord">
+        <ChordChart :chord="chord" />
+      </template>
+    </div>
+  </PopupBase>
 </template>
 
 <style scoped lang="scss">
-@import '../styles/mixins.scss';
-
-@include transition-slide-and-fade;
-
 #plus91-chord-popup {
-  @include popup;
-
-  $padding-x: 1rem;
-  padding-left: $padding-x;
-  padding-right: $padding-x;
-
   .banner {
     display: flex;
     align-items: center;

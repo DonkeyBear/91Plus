@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import AdjustWidget from '@/components/common/AdjustWidget.vue'
+import PopupBase from '@/components/common/PopupBase.vue'
 import { useStore } from '@/store'
 
 const store = useStore()
@@ -9,29 +10,17 @@ const getFontSize = computed(() => store.originalFontSize + store.fontSizeDelta)
 </script>
 
 <template>
-  <Transition name="slide-and-fade">
-    <div v-show="store.isPopupShow.font" id="plus91-font-popup">
-      <div class="font-popup-container">
-        <AdjustWidget
-          :onclick-left="() => { store.fontSizeDelta-- }"
-          :onclick-middle="() => { store.fontSizeDelta = 0 }"
-          :onclick-right="() => { store.fontSizeDelta++ }"
-          :disabled-left=" getFontSize <= 8 "
-          :disabled-right=" getFontSize >= 30 "
-        >
-          {{ getFontSize }}px
-        </AdjustWidget>
-      </div>
+  <PopupBase id="plus91-font-popup" v-model="store.isPopupShow.font">
+    <div class="font-popup-container">
+      <AdjustWidget
+        :onclick-left="() => { store.fontSizeDelta-- }"
+        :onclick-middle="() => { store.fontSizeDelta = 0 }"
+        :onclick-right="() => { store.fontSizeDelta++ }"
+        :disabled-left=" getFontSize <= 8 "
+        :disabled-right=" getFontSize >= 30 "
+      >
+        {{ getFontSize }}px
+      </AdjustWidget>
     </div>
-  </Transition>
+  </PopupBase>
 </template>
-
-<style scoped lang="scss">
-@import '@/styles/mixins.scss';
-
-@include transition-slide-and-fade;
-
-#plus91-font-popup {
-  @include popup;
-}
-</style>

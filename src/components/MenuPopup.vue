@@ -1,6 +1,7 @@
 <script setup>
 import html2canvas from 'html2canvas'
 import MenuButton from '@/components/common/MenuButton.vue'
+import PopupBase from '@/components/common/PopupBase.vue'
 import ChordSheetDocument from '@/modules/ChordSheetDocument'
 import { useStore } from '@/store'
 
@@ -31,26 +32,18 @@ function goToGithubPage() {
 </script>
 
 <template>
-  <Transition name="slide-and-fade">
-    <div v-show="store.isPopupShow.menu" id="plus91-menu-popup">
-      <div class="menu-popup-container">
-        <MenuButton icon="keyboard" name="快捷鍵" :color="BUTTON_COLOR" @click="() => { store.togglePopup('hotkey') }" />
-        <MenuButton icon="file-earmark-image" name="擷取為圖片" :color="BUTTON_COLOR" @click="captureAsImage" />
-        <MenuButton icon="youtube" name="搜尋 YouTube" :color="BUTTON_COLOR" @click="searchOnYoutube" />
-        <MenuButton icon="github" name="關於 91 Plus" :color="BUTTON_COLOR" @click="goToGithubPage" />
-      </div>
+  <PopupBase id="plus91-menu-popup" v-model="store.isPopupShow.menu">
+    <div class="menu-popup-container">
+      <MenuButton icon="keyboard" name="快捷鍵" :color="BUTTON_COLOR" @click="() => { store.togglePopup('hotkey') }" />
+      <MenuButton icon="file-earmark-image" name="擷取為圖片" :color="BUTTON_COLOR" @click="captureAsImage" />
+      <MenuButton icon="youtube" name="搜尋 YouTube" :color="BUTTON_COLOR" @click="searchOnYoutube" />
+      <MenuButton icon="github" name="關於 91 Plus" :color="BUTTON_COLOR" @click="goToGithubPage" />
     </div>
-  </Transition>
+  </PopupBase>
 </template>
 
 <style scoped lang="scss">
-@import '@/styles/mixins.scss';
-
-@include transition-slide-and-fade;
-
 #plus91-menu-popup {
-  @include popup;
-
   .menu-popup-container {
     display: flex;
     justify-content: space-around;

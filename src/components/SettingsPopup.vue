@@ -1,5 +1,5 @@
 <script setup>
-import RadioButtons from '@/components/common/RadioButtons.vue'
+import PopupBase from '@/components/common/PopupBase.vue'
 import ToggleSwitch from '@/components/common/ToggleSwitch.vue'
 import { useStore } from '@/store'
 
@@ -7,38 +7,26 @@ const store = useStore()
 </script>
 
 <template>
-  <Transition name="slide-and-fade">
-    <div v-show="store.isPopupShow.settings" id="plus91-settings-popup">
-      <div class="settings-popup-container">
-        <label class="setting-item">
-          <span>深色模式</span>
-          <ToggleSwitch v-model="store.isDarkMode" />
-        </label>
-        <label class="setting-item">
-          <span>協助測試雲端備份樂譜功能</span>
-          <ToggleSwitch v-model="store.agreeToArchiveSheet" />
-        </label>
-        <label class="setting-item">
-          <span>開發者模式</span>
-          <ToggleSwitch v-model="store.isDevMode" />
-        </label>
-      </div>
+  <PopupBase id="plus91-settings-popup" v-model="store.isPopupShow.settings">
+    <div class="settings-popup-container">
+      <label class="setting-item">
+        <span>深色模式</span>
+        <ToggleSwitch v-model="store.isDarkMode" />
+      </label>
+      <label class="setting-item">
+        <span>協助測試雲端備份樂譜功能</span>
+        <ToggleSwitch v-model="store.agreeToArchiveSheet" />
+      </label>
+      <label class="setting-item">
+        <span>開發者模式</span>
+        <ToggleSwitch v-model="store.isDevMode" />
+      </label>
     </div>
-  </Transition>
+  </PopupBase>
 </template>
 
 <style scoped lang="scss">
-@import '@/styles/mixins.scss';
-
-@include transition-slide-and-fade;
-
 #plus91-settings-popup {
-  @include popup;
-
-  $padding-x: 1rem;
-  padding-left: $padding-x;
-  padding-right: $padding-x;
-
   .setting-item {
     display: flex;
     align-items: center;
