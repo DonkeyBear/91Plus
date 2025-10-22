@@ -14,10 +14,9 @@ const bannerTextList = [
   '在 91 譜中沒有資料的和弦是畫不出來的呦！',
 ]
 
-const randomIndex = ref(0)
 function refreshBanner() {
-  randomIndex.value = Math.floor(Math.random() * bannerTextList.length)
-  bannerText.value = bannerTextList[randomIndex.value]
+  const randomIndex = Math.floor(Math.random() * bannerTextList.length)
+  bannerText.value = bannerTextList[randomIndex]
 }
 
 // 在開啟這個 Popup 的時候才繪製和弦
