@@ -34,7 +34,7 @@ const props = defineProps({
       :stroke="props.stroke"
       :active="props.active"
     />
-    <div class="toolbar-icon-text">
+    <div v-if="props.text" class="toolbar-icon-text">
       {{ props.text }}
     </div>
   </div>
