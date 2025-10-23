@@ -6,6 +6,8 @@ const props = defineProps({
   active: Boolean,
 })
 
+const isSearchInputFocused = ref(false)
+
 const searchText = ref('')
 function search() {
   if (!searchText.value) {
@@ -30,17 +32,29 @@ function backToPreviousPage() {
           stroke=".04rem"
           @click="backToPreviousPage"
         />
-        <input
-          v-model.trim="searchText"
-          type="text"
-          placeholder="91 Plus"
-          @keydown.enter="search"
-          @keydown.esc="(event) => { event.target.blur() }"
-        >
+        <form @submit.prevent="search">
+          <div class="search-container">
+            <input
+              v-model.trim="searchText"
+              type="text"
+              placeholder="搜尋樂譜 —— 91 Plus"
+              @keydown.esc.stop="(event) => { event.target.blur() }"
+              @focus="isSearchInputFocused = true"
+              @blur="isSearchInputFocused = false"
+            >
+            <ToolbarIcon
+              v-if="searchText"
+              class="clear-input"
+              icon="x"
+              :color="isSearchInputFocused ? '#0007' : '#fffa'"
+              @click="() => { searchText = '' }"
+            />
+          </div>
+        </form>
         <ToolbarIcon
           icon="search"
           stroke=".03rem"
-          @click="search()"
+          @click="search"
         />
       </div>
     </div>
@@ -66,14 +80,32 @@ function backToPreviousPage() {
 
   border-bottom: 1px solid var(--toolbar-border-color);
 
+  form,
+  .search-container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+  }
+
+  .search-container {
+    position: relative;
+    .clear-input {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
   input {
-    flex-grow: 1;
-    width: 100%;
+    flex: 1;
     border-radius: 50rem;
     border: 0;
     font-size: 0.8rem;
     font-weight: bold;
-    padding: 0.35rem 1.25rem;
+    $padding-x: 1.25rem;
+    padding-left: $padding-x;
+    padding-right: $padding-x;
     background: #fffa;
     color: #0009;
     opacity: 0.5;
