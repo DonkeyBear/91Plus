@@ -11,11 +11,10 @@
     "v": "npm version --no-git-tag-version"
   },
   "dependencies": {
-    "@vueuse/core": "^13.9.0",
+    "@vueuse/core": "^14.0.0",
     "html2canvas": "^1.4.1",
     "pinia": "^3.0.3",
     "pinia-plugin-persistedstate": "^4.5.0",
-    "ua-parser-js": "2.0.6",
     "vexchords": "^1.2.0",
     "vue": "^3.5.22",
     "zipson": "^0.2.12"
