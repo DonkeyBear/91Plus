@@ -1,6 +1,5 @@
 $bg-color: #fafafa;
 html {
-  --theme-color: rgb(75, 150, 169);
   --toolbar-bg-color: color-mix(in srgb, var(--theme-color) 65%, transparent);
   --toolbar-border-color: color-mix(in srgb, var(--theme-color) 50%, rgba(255, 255, 255, 0.1));
 }
