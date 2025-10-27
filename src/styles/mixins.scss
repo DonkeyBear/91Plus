@@ -12,7 +12,14 @@
 
 @mixin toolbar-container {
   width: min(100vw, 768px);
-  background: var(--toolbar-bg-color);
+  $bg-color: var(--toolbar-bg-color);
+  background-color: $bg-color;
+  $bg-gradient-color: color-mix(in srgb, $bg-color 99%, white);
+  background-image: linear-gradient(transparent, $bg-gradient-color 250%);
+  background-blend-mode: multiply;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
   backdrop-filter: blur(3px);
   padding: 0.25rem 0.75rem;
   display: flex;
