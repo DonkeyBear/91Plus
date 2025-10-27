@@ -1,5 +1,5 @@
 <script setup>
-import BootstrapIcon from './BootstrapIcon.vue'
+import BootstrapIcon from '@/components/common/BootstrapIcon.vue'
 
 const props = defineProps({
   options: {

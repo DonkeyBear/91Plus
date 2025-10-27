@@ -1,10 +1,10 @@
 <script setup>
 import { onClickOutside, useParentElement } from '@vueuse/core'
-import AppFooter from './components/AppFooter.vue'
-import AppHeader from './components/AppHeader.vue'
-import DarkModeOverlay from './components/DarkModeOverlay.vue'
-import ErudaContainer from './components/ErudaContainer.vue'
-import { useStore } from './store'
+import AppFooter from '@/components/AppFooter.vue'
+import AppHeader from '@/components/AppHeader.vue'
+import DarkModeOverlay from '@/components/DarkModeOverlay.vue'
+import ErudaContainer from '@/components/ErudaContainer.vue'
+import { useStore } from '@/store'
 
 const store = useStore()
 

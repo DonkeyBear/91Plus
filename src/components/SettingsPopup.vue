@@ -2,11 +2,11 @@
 import { useCssVar } from '@vueuse/core'
 import { watch } from 'vue'
 import colors from '@/assets/colors.json'
+import BootstrapIcon from '@/components/common/BootstrapIcon.vue'
 import ColorSwitcher from '@/components/common/ColorSwitcher.vue'
 import PopupBase from '@/components/common/PopupBase.vue'
 import ToggleSwitch from '@/components/common/ToggleSwitch.vue'
 import { useStore } from '@/store'
-import BootstrapIcon from './common/BootstrapIcon.vue'
 
 const store = useStore()
 

@@ -8,4 +8,18 @@ export default antfu({
       $: 'readonly', // 使用 window 內的 jQuery
     },
   },
+}, {
+  files: ['**/*.vue'],
+  rules: {
+    'no-restricted-imports': [
+      'error',
+      {
+        patterns: [
+          {
+            group: ['../*', './*'],
+          },
+        ],
+      },
+    ],
+  },
 })
