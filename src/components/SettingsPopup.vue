@@ -6,6 +6,7 @@ import ColorSwitcher from '@/components/common/ColorSwitcher.vue'
 import PopupBase from '@/components/common/PopupBase.vue'
 import ToggleSwitch from '@/components/common/ToggleSwitch.vue'
 import { useStore } from '@/store'
+import BootstrapIcon from './common/BootstrapIcon.vue'
 
 const store = useStore()
 
@@ -19,19 +20,31 @@ watch(() => store.themeColor, (newColor) => {
   <PopupBase id="plus91-settings-popup" v-model="store.isPopupShow.settings">
     <div class="settings-popup-container">
       <div class="setting-item">
-        <span>主題色</span>
+        <div>
+          <BootstrapIcon icon="palette" />
+          主題色
+        </div>
         <ColorSwitcher v-model="store.themeColor" :options="colors" />
       </div>
       <label class="setting-item">
-        <span>深色模式</span>
+        <div>
+          <BootstrapIcon icon="moon" />
+          深色模式
+        </div>
         <ToggleSwitch v-model="store.isDarkMode" />
       </label>
       <label class="setting-item">
-        <span>協助測試雲端備份樂譜功能</span>
+        <div>
+          <BootstrapIcon icon="cloudy" />
+          協助測試雲端樂譜
+        </div>
         <ToggleSwitch v-model="store.agreeToArchiveSheet" />
       </label>
       <label class="setting-item">
-        <span>開發者模式</span>
+        <div>
+          <BootstrapIcon icon="code-slash" />
+          開發者模式
+        </div>
         <ToggleSwitch v-model="store.isDevMode" />
       </label>
     </div>
@@ -40,6 +53,12 @@ watch(() => store.themeColor, (newColor) => {
 
 <style scoped lang="scss">
 #plus91-settings-popup {
+  .bi {
+    color: darkgray;
+    margin-right: 0.25em;
+    font-size: 1em;
+  }
+
   .setting-item {
     display: flex;
     align-items: center;
