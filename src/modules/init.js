@@ -3,14 +3,12 @@ import { StoreHandler } from './StoreHandler'
 import {
   archiveChordSheet,
   changeTitle,
-  injectGtag,
   onSheetDomReady,
   redirect,
 } from './utils'
 
 export default function init() {
   redirect()
-  injectGtag()
   const storeHandler = new StoreHandler()
   storeHandler.initWatchers()
   storeHandler.initKeyBindings()

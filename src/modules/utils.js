@@ -12,24 +12,6 @@ export function redirect() {
   }
 }
 
-/** 引入 Google Analytics */
-export function injectGtag() {
-  const newScript = document.createElement('script')
-  newScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JF4S3HZY31'
-  newScript.async = true
-  document.head.appendChild(newScript)
-  newScript.onload = () => {
-    // 此區塊由 Google Analytics 生成
-    window.dataLayer = window.dataLayer || []
-    function gtag() {
-      // eslint-disable-next-line prefer-rest-params
-      window.dataLayer.push(arguments)
-    }
-    gtag('js', new Date())
-    gtag('config', 'G-JF4S3HZY31')
-  }
-}
-
 /**
  * @typedef {object} Params
  * @property {number} transpose 移調值（-11 ~ 11）

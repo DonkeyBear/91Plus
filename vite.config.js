@@ -19,7 +19,6 @@ export default defineConfig({
         icon: 'https://www.91pu.com.tw/icons/favicon-32x32.png',
         namespace: 'https://github.com/DonkeyBear',
         author: 'DonkeyBear',
-        antifeature: [{ type: 'tracking', description: '使用 Google Analytics 了解使用情況' }],
         description: '自由轉調、輕鬆練歌，打造 91 譜的最佳體驗！',
         match: [
           '*://www.91pu.com.tw/m/*',
