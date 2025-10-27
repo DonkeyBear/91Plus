@@ -41,8 +41,6 @@ const props = defineProps({
 </template>
 
 <style scoped lang="scss">
-@import '@/styles/variables.scss';
-
 .toolbar-icon {
   cursor: pointer;
   padding: 0.25rem 0.75rem;

@@ -1,8 +1,7 @@
-@import './variables.scss';
-@import './cdns.scss';
+@use './variables.scss';
 
 html {
-  background: $bg-color url(/templets/pu/images/tone-bg.gif);
+  background: variables.$bg-color url(/templets/pu/images/tone-bg.gif);
 }
 
 #vue-91plus {

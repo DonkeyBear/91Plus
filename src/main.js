@@ -3,6 +3,8 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
 import App from './App.vue'
 import init from './modules/init'
+import './styles/cdns.scss'
+import './styles/variables.scss'
 import './styles/styles.scss'
 
 const pinia = createPinia()

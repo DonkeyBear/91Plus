@@ -11,12 +11,13 @@ const modelValue = defineModel()
 </template>
 
 <style scoped lang="scss">
-@import '@/styles/mixins.scss';
+@use '@/styles/mixins.scss';
+@use '@/styles/transitions.scss';
 
-@include transition-slide-and-fade;
+@include transitions.slide-and-fade;
 
 .plus91-popup {
-  @include popup;
+  @include mixins.popup;
 
   $padding-x: 1rem;
   padding-left: $padding-x;

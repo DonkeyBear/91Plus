@@ -11,8 +11,8 @@ const props = defineProps({
 </template>
 
 <style scoped lang="scss">
-@import '@/styles/variables.scss';
-@import '@/styles/mixins.scss';
+@use '@/styles/variables.scss';
+@use '@/styles/mixins.scss';
 
 .fade-enter-active,
 .fade-leave-active {
@@ -25,8 +25,8 @@ const props = defineProps({
 }
 
 #dark-mode-overlay {
-  @include overlay;
-  z-index: $z-dark-mode-overlay;
+  @include mixins.overlay;
+  z-index: variables.$z-dark-mode-overlay;
   backdrop-filter: invert(1) hue-rotate(145deg) saturate(0.75);
   pointer-events: none;
 }

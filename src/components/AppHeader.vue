@@ -62,19 +62,20 @@ function backToPreviousPage() {
 </template>
 
 <style scoped lang="scss">
-@import '@/styles/mixins.scss';
+@use '@/styles/mixins.scss';
+@use '@/styles/transitions.scss';
 
-@include transition-slide(up);
+@include transitions.slide(up);
 
 #plus91-header {
-  @include toolbar;
+  @include mixins.toolbar;
   top: 0;
 }
 
 .header-container {
-  @include toolbar-container;
+  @include mixins.toolbar-container;
 
-  @include breakpoint-large {
+  @include mixins.breakpoint-large {
     border-radius: 0 0 1rem 1rem;
   }
 

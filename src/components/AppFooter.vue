@@ -65,19 +65,20 @@ const store = useStore()
 </template>
 
 <style scoped lang="scss">
-@import '@/styles/mixins.scss';
+@use '@/styles/mixins.scss';
+@use '@/styles/transitions.scss';
 
-@include transition-slide(down);
+@include transitions.slide(down);
 
 #plus91-footer {
-  @include toolbar;
+  @include mixins.toolbar;
   bottom: 0;
 }
 
 .footer-container {
-  @include toolbar-container;
+  @include mixins.toolbar-container;
 
-  @include breakpoint-large {
+  @include mixins.breakpoint-large {
     border-radius: 1rem 1rem 0 0;
   }
 

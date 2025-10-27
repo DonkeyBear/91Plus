@@ -1,8 +1,7 @@
-@import './variables.scss';
-@import './transitions.scss';
+@use './variables.scss';
 
 @mixin toolbar {
-  z-index: $z-toolbars;
+  z-index: variables.$z-toolbars;
   display: flex;
   justify-content: center;
   position: fixed;
@@ -40,7 +39,7 @@
   left: 0;
   right: 0;
   bottom: 100%;
-  background: $bg-color;
+  background: variables.$bg-color;
   border: 1px solid lightgray;
   padding: 1rem 2rem;
   border-radius: 1rem;
