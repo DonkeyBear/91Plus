@@ -18,7 +18,7 @@ const modelValue = defineModel({
 $transition-duration: 0.3s;
 
 $thumb-diameter: 1em;
-$track-padding: 0.15em;
+$track-padding: 0.125em;
 $track-width: calc($thumb-diameter * 2 + $track-padding * 2);
 $track-height: calc($thumb-diameter + $track-padding * 2);
 

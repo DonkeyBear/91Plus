@@ -15,7 +15,6 @@ function search() {
   }
   const url = `https://www.91pu.com.tw/plus/search.php?keyword=${searchText.value}`
   window.open(url, '_blank').focus()
-  searchText.value = ''
 }
 
 function backToPreviousPage() {

@@ -137,7 +137,10 @@ export function getChordShapes() {
 export function getChordList() {
   const chordList = []
   $('#tone_z .tf').each(function () {
-    chordList.push($(this).text())
+    const chordName = $(this).text().trim()
+    if (chordName) {
+      chordList.push(chordName)
+    }
   })
   return [...new Set(chordList)]
 }
