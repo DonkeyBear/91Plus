@@ -24,7 +24,7 @@ export const useStore = defineStore('store', {
       // 偏好設定相關狀態
       // ####################
       agreeToArchiveSheet: true,
-      isDevMode: false,
+      theme: 'classic-light',
       themeColor: '#4b96a9',
       // ####################
       // 譜面相關狀態
@@ -47,7 +47,7 @@ export const useStore = defineStore('store', {
     storage: MonkeyStorage,
     deserialize: parse,
     serialize: stringify,
-    pick: ['isDarkMode', 'agreeToArchiveSheet', 'isDevMode', 'themeColor'],
+    pick: ['theme', 'agreeToArchiveSheet', 'isDevMode', 'themeColor'],
     beforeHydrate() {
       // eslint-disable-next-line no-console
       console.log('[91Plus] 讀取偏好設置中')

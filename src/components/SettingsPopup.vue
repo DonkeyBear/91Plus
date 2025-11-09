@@ -2,9 +2,11 @@
 import { useCssVar } from '@vueuse/core'
 import { watch } from 'vue'
 import colors from '@/assets/colors.json'
+import themes from '@/assets/themes.json'
 import BootstrapIcon from '@/components/common/BootstrapIcon.vue'
 import ColorSwitcher from '@/components/common/ColorSwitcher.vue'
 import PopupBase from '@/components/common/PopupBase.vue'
+import RadioButtons from '@/components/common/RadioButtons.vue'
 import ToggleSwitch from '@/components/common/ToggleSwitch.vue'
 import { useStore } from '@/store'
 
@@ -13,6 +15,10 @@ const store = useStore()
 const themeColor = useCssVar('--theme-color', document.documentElement)
 watch(() => store.themeColor, (newColor) => {
   themeColor.value = newColor
+}, { immediate: true })
+
+watch(() => store.theme, (newTheme) => {
+  document.documentElement.setAttribute('theme', newTheme)
 }, { immediate: true })
 </script>
 
@@ -26,13 +32,13 @@ watch(() => store.themeColor, (newColor) => {
         </div>
         <ColorSwitcher v-model="store.themeColor" :options="colors" />
       </div>
-      <label class="setting-item">
+      <div class="setting-item">
         <div>
           <BootstrapIcon icon="moon" />
           深色模式
         </div>
-        <ToggleSwitch v-model="store.isDarkMode" />
-      </label>
+        <RadioButtons v-model="store.theme" :options="themes" />
+      </div>
       <label class="setting-item">
         <div>
           <BootstrapIcon icon="cloudy" />

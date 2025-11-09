@@ -1,0 +1,6 @@
+[
+  { "label": "經典白", "value": "classic-light" },
+  { "label": "經典黑", "value": "classic-dark" },
+  { "label": "簡約白", "value": "simple-light" },
+  { "label": "簡約黑", "value": "simple-dark" }
+]

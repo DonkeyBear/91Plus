@@ -1,7 +1,16 @@
 @use './variables.scss';
 
 html {
-  background: variables.$bg-color url(/templets/pu/images/tone-bg.gif);
+  --bg: #{variables.$bg-color} url(/templets/pu/images/tone-bg.gif);
+  background: var(--bg);
+
+  .showToneInfo {
+    background: var(--bg);
+  }
+
+  &[theme^='simple-'] {
+    --bg: white;
+  }
 }
 
 #vue-91plus {
