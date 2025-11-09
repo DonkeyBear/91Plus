@@ -26,7 +26,7 @@ const activatedIndex = computed(() => {
       v-for="(option, index) of props.options"
       :key="`${option.label}_${option.value}`"
       class="radio-button"
-      :class="{ active: modelValue === option.value }"
+      :class="{ selected: modelValue === option.value }"
     >
       <button @click="modelValue = option.value">
         {{ option.label }}
@@ -34,7 +34,7 @@ const activatedIndex = computed(() => {
       <div
         v-if="index < props.options.length - 1"
         class="vertical-rule"
-        :class="{ active: index === activatedIndex || index === activatedIndex - 1 }"
+        :class="{ selected: index === activatedIndex || index === activatedIndex - 1 }"
       />
     </div>
   </div>
@@ -45,8 +45,8 @@ const activatedIndex = computed(() => {
   display: inline-flex;
 
   .radio-button {
-    $border-radius: 0.5em;
-    $border-color: darkgray;
+    $border-radius: 50rem;
+    $border-color: #c0c0c0;
     $border-color-active: color-mix(in srgb, dodgerblue 80%, black);
 
     display: flex;
@@ -65,7 +65,7 @@ const activatedIndex = computed(() => {
       }
     }
 
-    &.active {
+    &.selected {
       button {
         background: dodgerblue !important;
         border-color: $border-color-active;
@@ -73,10 +73,13 @@ const activatedIndex = computed(() => {
       }
     }
 
+    $side-padding-x: 0.65em;
+
     &:first-child {
       button {
         border-radius: $border-radius 0 0 $border-radius;
         border-right: none;
+        padding-left: $side-padding-x;
       }
     }
 
@@ -84,6 +87,7 @@ const activatedIndex = computed(() => {
       button {
         border-radius: 0 $border-radius $border-radius 0;
         border-left: none;
+        padding-right: $side-padding-x;
       }
     }
 
@@ -98,7 +102,7 @@ const activatedIndex = computed(() => {
       width: 1px;
       background: $border-color;
 
-      &.active {
+      &.selected {
         background: $border-color-active;
       }
     }
