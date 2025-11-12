@@ -1,13 +1,11 @@
 <script setup>
 import { useCssVar } from '@vueuse/core'
+import { ElOption, ElSelect, ElSwitch } from 'element-plus'
 import { watch } from 'vue'
 import colors from '@/assets/colors.json'
 import themes from '@/assets/themes.json'
 import BootstrapIcon from '@/components/common/BootstrapIcon.vue'
-import ColorSwitcher from '@/components/common/ColorSwitcher.vue'
 import PopupBase from '@/components/common/PopupBase.vue'
-import RadioButtons from '@/components/common/RadioButtons.vue'
-import ToggleSwitch from '@/components/common/ToggleSwitch.vue'
 import { useStore } from '@/store'
 
 const store = useStore()
@@ -30,28 +28,45 @@ watch(() => store.theme, (newTheme) => {
           <BootstrapIcon icon="palette" />
           主題色
         </div>
-        <ColorSwitcher v-model="store.themeColor" :options="colors" />
+        <ElSelect v-model="store.themeColor">
+          <ElOption v-for="item in colors" :key="item.value" :label="item.label" :value="item.value">
+            <div class="color-option" style="display: flex; align-items: center;">
+              <div
+                class="color-swatch" :style="{
+                  width: '1em',
+                  height: '1em',
+                  borderRadius: '0.25em',
+                  marginRight: '0.5em',
+                  backgroundColor: item.value,
+                }"
+              />
+              <span>{{ item.label }}</span>
+            </div>
+          </ElOption>
+        </ElSelect>
       </div>
       <div class="setting-item">
         <div>
           <BootstrapIcon icon="moon" />
           深色模式
         </div>
-        <RadioButtons v-model="store.theme" :options="themes" />
+        <ElSelect v-model="store.theme">
+          <ElOption v-for="item in themes" :key="item.value" :label="item.label" :value="item.value" />
+        </ElSelect>
       </div>
       <label class="setting-item">
         <div>
           <BootstrapIcon icon="cloudy" />
           協助測試雲端樂譜
         </div>
-        <ToggleSwitch v-model="store.agreeToArchiveSheet" />
+        <ElSwitch v-model="store.agreeToArchiveSheet" />
       </label>
       <label class="setting-item">
         <div>
           <BootstrapIcon icon="code-slash" />
           開發者模式
         </div>
-        <ToggleSwitch v-model="store.isDevMode" />
+        <ElSwitch v-model="store.isDevMode" />
       </label>
     </div>
   </PopupBase>
@@ -69,6 +84,7 @@ watch(() => store.theme, (newTheme) => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 1.25em;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     color: rgba($color: black, $alpha: 0.8);
@@ -77,6 +93,14 @@ watch(() => store.theme, (newTheme) => {
     &:hover {
       background: rgba($color: black, $alpha: 0.05);
     }
+  }
+
+  .el-select {
+    width: 10em;
+  }
+
+  .el-switch {
+    height: unset;
   }
 }
 </style>

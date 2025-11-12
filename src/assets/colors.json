@@ -1,6 +1,6 @@
 [
-  "#4b96a9",
-  "#a2b538",
-  "#e181bf",
-  "#6c59bb"
+  { "label": "湖水", "value": "#4b96a9" },
+  { "label": "抹茶", "value": "#a2b538" },
+  { "label": "櫻花", "value": "#e181bf" },
+  { "label": "紫羅蘭", "value": "#6c59bb" }
 ]
