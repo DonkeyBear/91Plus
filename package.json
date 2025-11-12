@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^14.0.0",
+    "element-plus": "^2.11.7",
     "html2canvas": "^1.4.1",
     "pinia": "^3.0.4",
     "pinia-plugin-persistedstate": "^4.7.1",

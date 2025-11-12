@@ -28,12 +28,15 @@ export default defineConfig({
       },
       build: {
         externalGlobals: {
-          vue: cdn.jsdelivr('Vue', 'dist/vue.global.prod.js'),
           // pinia: cdn.jsdelivr('pinia', 'dist/pinia.iife.min.js'),
           // 'pinia-plugin-persistedstate': cdn.jsdelivr('pinia-plugin-persistedstate', 'dist/index.min.js'),
-          zipson: cdn.jsdelivr('zipson', 'dist/zipson.min.js'),
-          html2canvas: cdn.jsdelivr('html2canvas', 'dist/html2canvas.min.js'),
-          vexchords: cdn.jsdelivr('vexchords', 'dist/vexchords.dev.min.js'),
+          'vue': cdn.jsdelivr('Vue', 'dist/vue.global.prod.js').concat(
+            `data:application/javascript,${encodeURIComponent(';window.Vue=Vue;')}`,
+          ),
+          'element-plus': cdn.jsdelivr('ElementPlus', 'dist/index.full.min.js'),
+          'zipson': cdn.jsdelivr('zipson', 'dist/zipson.min.js'),
+          'html2canvas': cdn.jsdelivr('html2canvas', 'dist/html2canvas.min.js'),
+          'vexchords': cdn.jsdelivr('vexchords', 'dist/vexchords.dev.min.js'),
         },
       },
     }),
