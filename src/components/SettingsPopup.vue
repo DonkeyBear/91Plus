@@ -33,14 +33,16 @@ watch(() => store.theme, (newTheme) => {
             <div class="color-option" style="display: flex; align-items: center;">
               <div
                 class="color-swatch" :style="{
-                  width: '1em',
+                  width: '0.35em',
                   height: '1em',
-                  borderRadius: '0.25em',
-                  marginRight: '0.5em',
+                  borderRadius: '0.2em',
+                  marginRight: '0.35em',
                   backgroundColor: item.value,
                 }"
               />
-              <span>{{ item.label }}</span>
+              <span :style="{ color: `color-mix(in oklch, ${item.value} 85%, gray 15%)` }">
+                {{ item.label }}
+              </span>
             </div>
           </ElOption>
         </ElSelect>
