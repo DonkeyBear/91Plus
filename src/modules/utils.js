@@ -1,4 +1,5 @@
 import { unsafeWindow } from '$'
+import api from './api'
 import ChordSheetDocument from './ChordSheetDocument'
 import ChordSheetElement from './ChordSheetElement'
 
@@ -43,8 +44,10 @@ export function archiveChordSheet() {
   try {
     const chordSheetElement = new ChordSheetElement(sheet)
     chordSheetElement.formatUnderlines()
+    const sheetText = chordSheetDocument.getSheetText()
+    chordSheetElement.unformatUnderlines()
 
-    const formBody = {
+    const data = {
       id: chordSheetDocument.getId(),
       title: chordSheetDocument.getTitle(),
       key: chordSheetDocument.getKey(),
@@ -54,30 +57,23 @@ export function archiveChordSheet() {
       composer: chordSheetDocument.getComposer(),
       lyricist: chordSheetDocument.getLyricist(),
       bpm: chordSheetDocument.getBpm(),
-      sheet_text: chordSheetDocument.getSheetText(),
+      sheet_text: sheetText,
     }
-    chordSheetElement.unformatUnderlines()
 
-    fetch('https://91-plus-plus-api.fly.dev/archive', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formBody),
-    })
+    api.post('/archive', data)
       .then((response) => {
         // eslint-disable-next-line no-console
-        console.log('[91 Plus] 雲端樂譜備份成功：', response)
+        console.log('[91Plus] 雲端樂譜備份成功：', response)
       })
       .catch((error) => {
-        console.error('[91 Plus] 雲端樂譜備份失敗：', error)
+        console.error('[91Plus] 雲端樂譜備份失敗：', error)
       })
   }
   catch {
-    console.warn('[91 Plus] 樂譜解析失敗，無法備份')
-    fetch(
-      `https://91-plus-plus-api.fly.dev/report?id=${chordSheetDocument.getId()}`,
-    )
+    console.warn('[91Plus] 樂譜解析失敗，無法備份')
+    api.get('/report', {
+      params: { id: chordSheetDocument.getId() },
+    })
   }
 }
 

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^14.0.0",
+    "axios": "^1.13.2",
     "element-plus": "^2.11.7",
     "html2canvas": "^1.4.1",
     "pinia": "^3.0.4",
