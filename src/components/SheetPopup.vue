@@ -27,7 +27,7 @@ const store = useStore()
       </div>
       <div class="instrument-select-container">
         <button class="instrument-select-button" @click="() => { switchInstrument('') }">
-          無
+          隱藏和弦圖
         </button>
         <button class="instrument-select-button" @click="() => { switchInstrument('guitar') }">
           吉他
