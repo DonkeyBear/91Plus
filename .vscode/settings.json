@@ -74,5 +74,6 @@
     "vueuse",
     "wmask",
     "zipson"
-  ]
+  ],
+  "eslint.format.enable": true
 }
