@@ -3,6 +3,7 @@ import html2canvas from 'html2canvas'
 import MenuButton from '@/components/common/MenuButton.vue'
 import PopupBase from '@/components/common/PopupBase.vue'
 import ChordSheetDocument from '@/modules/ChordSheetDocument'
+import { $ } from '@/modules/utils'
 import { useStore } from '@/store'
 
 const store = useStore()
@@ -10,7 +11,7 @@ const store = useStore()
 const BUTTON_COLOR = '#555'
 
 async function captureAsImage() {
-  const content = document.querySelector('section.content')
+  const content = $('section.content')
   const canvas = await html2canvas(content)
   const blob = await new Promise((resolve) => {
     canvas.toBlob(resolve, 'image/png')

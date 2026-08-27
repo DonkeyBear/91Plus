@@ -3,6 +3,26 @@ import api from './api'
 import ChordSheetDocument from './ChordSheetDocument'
 import ChordSheetElement from './ChordSheetElement'
 
+/**
+ * 選取單一元素
+ * @param {string} selector
+ * @param {ParentNode} [context]
+ * @returns {HTMLElement|null}
+ */
+export function $(selector, context = document) {
+  return context.querySelector(selector)
+}
+
+/**
+ * 選取多個元素並轉為陣列
+ * @param {string} selector
+ * @param {ParentNode} [context]
+ * @returns {HTMLElement[]}
+ */
+export function $$(selector, context = document) {
+  return Array.from(context.querySelectorAll(selector))
+}
+
 /** 若樂譜頁面為電腦版，跳轉至行動版 */
 export function redirect() {
   const currentUrl = window.location.href
@@ -33,7 +53,7 @@ export function getQueryParams() {
 
 /** 將網頁標題替換為自訂格式 */
 export function changeTitle() {
-  const newTitle = document.querySelector('h1').textContent.trim()
+  const newTitle = $('h1').textContent.trim()
   document.title = `${newTitle} | 91+`
 }
 
@@ -85,9 +105,8 @@ export function archiveChordSheet() {
 export function onSheetDomReady(callback) {
   return new MutationObserver((_records, observer) => {
     // 經過檢查，91 譜的動態讀取都會在一次 Mutation 裡完成
-    // #tone_z 在動態讀取前就已經存在於 DOM 結構，並且不包含任何子元素
-    // 所以將 #tone_z 的子元素數量作為動態讀取是否完成的依據
-    const isMutationDone = !!document.querySelector('h1')
+    // 以歌曲標題是否出現作為判斷依據
+    const isMutationDone = !!$('h1')
     if (isMutationDone) {
       observer.disconnect()
       callback()
@@ -97,23 +116,24 @@ export function onSheetDomReady(callback) {
 
 /**
  * 切換和弦譜旁顯示的和弦類型（91 譜原生）
- * @param {'guitar'|'ukulele'} instrument
+ * @param {'guitar'|'ukulele'} _instrument
  */
-export function switchInstrument(instrument) {
-  switch (instrument) {
-    case 'guitar': {
-      $('.schord').trigger('click')
-      break
-    }
-    case 'ukulele': {
-      $('.ukschord').trigger('click')
-      break
-    }
-    default: {
-      $('.nsChord').trigger('click')
-      break
-    }
-  }
+export function switchInstrument(_instrument) {
+  // TODO: 處理切換和弦類型
+  // switch (instrument) {
+  //   case 'guitar': {
+  //     $('.schord').trigger('click')
+  //     break
+  //   }
+  //   case 'ukulele': {
+  //     $('.ukschord').trigger('click')
+  //     break
+  //   }
+  //   default: {
+  //     $('.nsChord').trigger('click')
+  //     break
+  //   }
+  // }
 }
 
 /**
@@ -158,6 +178,6 @@ export function convertChordName(chordName) {
  */
 export function getChordElements() {
   /** @type {HTMLElement[]} 譜上所有的文字元素 */
-  const allTextElements = [...document.querySelectorAll('div > p > span > span.MuiBox-root')]
+  const allTextElements = $$('div > p > span > span.MuiBox-root')
   return allTextElements.filter(el => getComputedStyle(el).color === 'rgb(36, 111, 181)')
 }

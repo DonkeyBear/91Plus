@@ -2,7 +2,7 @@ import { onKeyStroke, useActiveElement } from '@vueuse/core'
 import { watch } from 'vue'
 import { useStore } from '../store'
 import ChordSheetElement from './ChordSheetElement'
-import { getQueryParams } from './utils'
+import { $, $$, getQueryParams } from './utils'
 
 /** 在 Vue 實例之外，只有這個 Class 會直接跟 Store 打交道，包括監聽與賦值 */
 export class StoreHandler {
@@ -16,10 +16,9 @@ export class StoreHandler {
   /** 從 DOM 取得 Store 所需的初始化狀態 */
   initStateFromDom() {
     // 儲存初始 Capo 和調號
-    // const capoSelected = $('.capo .select').eq(0).text().trim()
     let capoSelected = null
     /** @type {HTMLElement[]} */
-    const capoSelectedElements = [...document.querySelectorAll('[role="button"].MuiBox-root')]
+    const capoSelectedElements = $$('[role="button"].MuiBox-root')
     capoSelectedElements.find((el) => {
       const isBackgroundColorCorrect = getComputedStyle(el).backgroundColor === 'rgb(81, 10, 172)'
       const isContentCorrect = el.textContent.trim().startsWith('Capo')
@@ -31,7 +30,6 @@ export class StoreHandler {
     })
     const originalCapo = +capoSelected.match(/\d+/)[0] // CAPO
     const originalKey = capoSelected.match(/[A-G]/)[0] // 調
-    console.log(originalCapo, originalKey)
     this.#store.originalCapo = originalCapo
     this.#store.originalKey = originalKey
 
@@ -98,7 +96,7 @@ export class StoreHandler {
         this.#store.closePopups()
       }
       setTimeout(() => {
-        document.querySelector('#plus91-header input')?.focus()
+        $('#plus91-header input')?.focus()
       })
     }))
     onKeyStroke('Escape', whenInputNotFocused(() => {

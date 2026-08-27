@@ -1,5 +1,5 @@
 import Chord from './Chord'
-import { getChordElements } from './utils'
+import { $$, getChordElements } from './utils'
 
 /** 用於修改樂譜 */
 export default class ChordSheetElement {
@@ -30,8 +30,8 @@ export default class ChordSheetElement {
 
   /** @returns {ChordSheetElement} 當前實例 */
   formatUnderlines() {
-    const underlineEl = this.chordSheetElement.querySelectorAll('u')
-    const doubleUnderlineEl = this.chordSheetElement.querySelectorAll('abbr')
+    const underlineEl = $$('u', this.chordSheetElement)
+    const doubleUnderlineEl = $$('abbr', this.chordSheetElement)
     underlineEl.forEach((el) => {
       el.textContent = `{_${el.textContent}_}`
     })
@@ -52,8 +52,8 @@ export default class ChordSheetElement {
 
   /** @returns {ChordSheetElement} 當前實例 */
   unformatUnderlines() {
-    const underlineEl = this.chordSheetElement.querySelectorAll('u')
-    const doubleUnderlineEl = this.chordSheetElement.querySelectorAll('abbr')
+    const underlineEl = $$('u', this.chordSheetElement)
+    const doubleUnderlineEl = $$('abbr', this.chordSheetElement)
     this.#unformat(underlineEl)
     this.#unformat(doubleUnderlineEl)
     return this

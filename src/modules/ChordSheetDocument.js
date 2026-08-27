@@ -1,12 +1,14 @@
+import { $ } from './utils'
+
 /** 用於取得樂譜相關資訊 */
 export default class ChordSheetDocument {
   constructor() {
     this.el = {
-      mtitle: document.getElementById('mtitle'),
-      tkinfo: document.querySelector('.tkinfo'),
-      capoSelect: document.querySelector('.capo .select'),
-      tinfo: document.querySelector('.tinfo'),
-      tone_z: document.getElementById('tone_z'),
+      mtitle: $('#mtitle'),
+      tkinfo: $('.tkinfo'),
+      capoSelect: $('.capo .select'),
+      tinfo: $('.tinfo'),
+      tone_z: $('#tone_z'),
     }
   }
 
