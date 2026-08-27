@@ -60,6 +60,6 @@ export default class Chord {
 
   /** @returns {string} 將升降號改為上下標的和弦字串 */
   toFormattedString() {
-    return this.chordString.replaceAll(/[#b]/g, /* html */`<sup>$&</sup>`)
+    return this.chordString.replaceAll(/[#b]/g, /* html */`<sup class="accidentals">$&</sup>`)
   }
 }
