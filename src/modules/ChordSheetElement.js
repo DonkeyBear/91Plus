@@ -1,4 +1,5 @@
 import Chord from './Chord'
+import { getChordElements } from './utils'
 
 /** 用於修改樂譜 */
 export default class ChordSheetElement {
@@ -12,11 +13,18 @@ export default class ChordSheetElement {
    * @param {number} delta 相對於當前調的移調值
    */
   static transposeSheet(delta) {
-    // 修改譜上的和弦
-    $('#tone_z .tf').each(function () {
-      const chord = new Chord($(this).text())
+    // 修改譜上的和弦 (deprecated)
+    // $('#tone_z .tf').each(function () {
+    //   const chord = new Chord($(this).text())
+    //   const newChordHTML = chord.transpose(-delta).toFormattedString()
+    //   $(this).html(newChordHTML)
+    // })
+
+    const chordElements = getChordElements()
+    chordElements.forEach((el) => {
+      const chord = new Chord(el.textContent)
       const newChordHTML = chord.transpose(-delta).toFormattedString()
-      $(this).html(newChordHTML)
+      el.innerHTML = newChordHTML
     })
   }
 

@@ -23,6 +23,7 @@ export default defineConfig({
         match: [
           '*://www.91pu.com.tw/m/*',
           '*://www.91pu.com.tw/song/*',
+          '*://www.91pu.com.tw/sheet/song/*',
         ],
         grant: ['GM_setValue', 'GM_getValue'],
       },

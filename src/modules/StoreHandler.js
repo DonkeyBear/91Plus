@@ -16,17 +16,30 @@ export class StoreHandler {
   /** 從 DOM 取得 Store 所需的初始化狀態 */
   initStateFromDom() {
     // 儲存初始 Capo 和調號
-    const capoSelected = $('.capo .select').eq(0).text().trim()
-    const originalCapo = +capoSelected.split(/\s*\/\s*/)[0] // CAPO
-    const originalKey = capoSelected.split(/\s*\/\s*/)[1] // 調
+    // const capoSelected = $('.capo .select').eq(0).text().trim()
+    let capoSelected = null
+    /** @type {HTMLElement[]} */
+    const capoSelectedElements = [...document.querySelectorAll('[role="button"].MuiBox-root')]
+    capoSelectedElements.find((el) => {
+      const isBackgroundColorCorrect = getComputedStyle(el).backgroundColor === 'rgb(81, 10, 172)'
+      const isContentCorrect = el.textContent.trim().startsWith('Capo')
+      if (isBackgroundColorCorrect && isContentCorrect) {
+        capoSelected = el.textContent.trim()
+        return true
+      }
+      return false
+    })
+    const originalCapo = +capoSelected.match(/\d+/)[0] // CAPO
+    const originalKey = capoSelected.match(/[A-G]/)[0] // 調
+    console.log(originalCapo, originalKey)
     this.#store.originalCapo = originalCapo
     this.#store.originalKey = originalKey
 
     // 儲存初始字型大小和行高，單位為 px
-    const fontSize = +$('#tone_z').css('font-size').match(/^\d+/)[0]
-    const lineHeight = +$('#tone_z > p').css('line-height').match(/^\d+/)[0]
-    this.#store.originalFontSize = fontSize
-    this.#store.originalLineHeight = lineHeight
+    // const fontSize = +$('#tone_z').css('font-size').match(/^\d+/)[0]
+    // const lineHeight = +$('#tone_z > p').css('line-height').match(/^\d+/)[0]
+    // this.#store.originalFontSize = fontSize
+    // this.#store.originalLineHeight = lineHeight
 
     // 依照 URL 參數進行移調
     const params = getQueryParams()
@@ -52,8 +65,8 @@ export class StoreHandler {
     watch(() => this.#store.fontSizeDelta, (newValue) => {
       const oFontSize = this.#store.originalFontSize
       const oLineHeight = this.#store.originalLineHeight
-      $('#tone_z').css('font-size', `${oFontSize + newValue}px`)
-      $('#tone_z > p').css('line-height', `${oLineHeight + newValue}px`)
+      // $('#tone_z').css('font-size', `${oFontSize + newValue}px`)
+      // $('#tone_z > p').css('line-height', `${oLineHeight + newValue}px`)
     })
   }
 
@@ -85,7 +98,7 @@ export class StoreHandler {
         this.#store.closePopups()
       }
       setTimeout(() => {
-        $('#plus91-header input')?.get(0)?.focus()
+        document.querySelector('#plus91-header input')?.focus()
       })
     }))
     onKeyStroke('Escape', whenInputNotFocused(() => {

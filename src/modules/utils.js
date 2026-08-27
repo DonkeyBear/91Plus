@@ -33,7 +33,7 @@ export function getQueryParams() {
 
 /** 將網頁標題替換為自訂格式 */
 export function changeTitle() {
-  const newTitle = $('#mtitle').text().trim()
+  const newTitle = document.querySelector('h1').textContent.trim()
   document.title = `${newTitle} | 91+`
 }
 
@@ -87,7 +87,7 @@ export function onSheetDomReady(callback) {
     // 經過檢查，91 譜的動態讀取都會在一次 Mutation 裡完成
     // #tone_z 在動態讀取前就已經存在於 DOM 結構，並且不包含任何子元素
     // 所以將 #tone_z 的子元素數量作為動態讀取是否完成的依據
-    const isMutationDone = !!document.querySelector('#tone_z').childElementCount
+    const isMutationDone = !!document.querySelector('h1')
     if (isMutationDone) {
       observer.disconnect()
       callback()
@@ -132,12 +132,12 @@ export function getChordShapes() {
  */
 export function getChordList() {
   const chordList = []
-  $('#tone_z .tf').each(function () {
-    const chordName = $(this).text().trim()
-    if (chordName) {
-      chordList.push(chordName)
-    }
-  })
+  // $('#tone_z .tf').each(function () {
+  //   const chordName = $(this).text().trim()
+  //   if (chordName) {
+  //     chordList.push(chordName)
+  //   }
+  // })
   return [...new Set(chordList)]
 }
 
@@ -150,4 +150,14 @@ export function convertChordName(chordName) {
   const root = chordName.match(/^[A-G]#?/)[0]
   const rest = chordName.replace(/^[A-G]#?/, '')
   return `${rest} ${root}`
+}
+
+/**
+ * 取得所有和弦的 HTML 元素
+ * @returns {HTMLElement[]} 和弦元素陣列
+ */
+export function getChordElements() {
+  /** @type {HTMLElement[]} 譜上所有的文字元素 */
+  const allTextElements = [...document.querySelectorAll('div > p > span > span.MuiBox-root')]
+  return allTextElements.filter(el => getComputedStyle(el).color === 'rgb(36, 111, 181)')
 }

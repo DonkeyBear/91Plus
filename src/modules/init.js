@@ -8,7 +8,7 @@ import {
 } from './utils'
 
 export default function init() {
-  redirect()
+  // redirect()
   const storeHandler = new StoreHandler()
   storeHandler.initWatchers()
   storeHandler.initKeyBindings()

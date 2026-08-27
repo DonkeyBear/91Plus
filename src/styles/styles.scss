@@ -72,3 +72,8 @@ footer, // 彈出式頁尾
 {
   display: none !important;
 }
+
+body > [role='presentation'],
+#adblock-gate-root {
+  display: none !important;
+}
